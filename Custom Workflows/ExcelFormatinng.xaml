@@ -4,7 +4,7 @@
     <x:Property Name="io_dt_TransactionData" Type="InOutArgument(sd:DataTable)" />
     <x:Property Name="in_TodaysDateFolder" Type="InArgument(x:String)" />
   </x:Members>
-  <sap:VirtualizedContainerService.HintSize>748.8,1885.6</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1153.3333333333333,2582</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>ActivityBuilder_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="31">
@@ -122,7 +122,7 @@
       <x:Boolean x:Key="IsAnnotationDocked">False</x:Boolean>
     </scg:Dictionary>
   </sap:WorkflowViewStateService.ViewState>
-  <Sequence sap2010:Annotation.AnnotationText="Check different conditons on Input Excel File" DisplayName="Excel Formating" sap:VirtualizedContainerService.HintSize="496,1820.8" sap2010:WorkflowViewState.IdRef="Sequence_42">
+  <Sequence sap2010:Annotation.AnnotationText="Check different conditons on Input Excel File" DisplayName="Excel Formating" sap:VirtualizedContainerService.HintSize="798,2517.3333333333335" sap2010:WorkflowViewState.IdRef="Sequence_42">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:Boolean" Name="IsColumnPresent" />
       <Variable x:TypeArguments="x:String" Name="InvoiceReportFileName" />
@@ -138,7 +138,7 @@
         <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <Assign DisplayName="Assign || Invoice File Name" sap:VirtualizedContainerService.HintSize="433.6,81.6" sap2010:WorkflowViewState.IdRef="Assign_32">
+    <Assign DisplayName="Assign || Invoice File Name" sap:VirtualizedContainerService.HintSize="756,62" sap2010:WorkflowViewState.IdRef="Assign_32">
       <Assign.To>
         <OutArgument x:TypeArguments="x:String">[InvoiceReportFileName]</OutArgument>
       </Assign.To>
@@ -146,7 +146,7 @@
         <InArgument x:TypeArguments="x:String">[Directory.GetFiles(in_TodaysDateFolder+"\","*.xls*")(0)]</InArgument>
       </Assign.Value>
     </Assign>
-    <Assign DisplayName="Assign || Manipulated Invoice File Name" sap:VirtualizedContainerService.HintSize="433.6,81.6" sap2010:WorkflowViewState.IdRef="Assign_33">
+    <Assign DisplayName="Assign || Manipulated Invoice File Name" sap:VirtualizedContainerService.HintSize="756,62" sap2010:WorkflowViewState.IdRef="Assign_33">
       <Assign.To>
         <OutArgument x:TypeArguments="x:String">[InvoiceReportFileName]</OutArgument>
       </Assign.To>
@@ -154,43 +154,48 @@
         <InArgument x:TypeArguments="x:String">[Split(InvoiceReportFileName,"\").Last]</InArgument>
       </Assign.Value>
     </Assign>
-    <ui:LogMessage DisplayName="Log Message || Invoice File Name Log" sap:VirtualizedContainerService.HintSize="433.6,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_42" Level="Info" Message="[&quot;Info: &quot;+InvoiceReportFileName+&quot; &quot;+&quot;File Validation process started&quot;]" />
-    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="ExcelDataValidationWorkflow.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="433.6,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_31" UnSafe="False" WorkflowFileName="Custom Workflows\ExcelDataValidationWorkflow.xaml">
+    <ui:LogMessage DisplayName="Log Message || Invoice File Name Log" sap:VirtualizedContainerService.HintSize="756,94.66666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_42" Level="Info" Message="[&quot;Info: &quot;+InvoiceReportFileName+&quot; &quot;+&quot;File Validation process started&quot;]" />
+    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="Validates Excel dat" DisplayName="ExcelDataValidationWorkflow.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="756,144.66666666666666" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_31" UnSafe="False" WorkflowFileName="Custom Workflows\ExcelDataValidationWorkflow.xaml">
       <ui:InvokeWorkflowFile.Arguments>
         <InArgument x:TypeArguments="x:String" x:Key="in_ColumnsName">[in_Config("RequiredColumnsCheck").ToString.Trim]</InArgument>
         <OutArgument x:TypeArguments="x:Boolean" x:Key="out_IsColumnPresent">[IsColumnPresent]</OutArgument>
         <OutArgument x:TypeArguments="x:String" x:Key="out_MissingColumnName">[MissingColumnName]</OutArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_ExcelFilePath">[in_TodaysDateFolder+"\"+InvoiceReportFileName]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_ExcelFilePath">[Path.Combine(in_TodaysDateFolder,InvoiceReportFileName)]</InArgument>
         <InArgument x:TypeArguments="x:String" x:Key="in_ExcelSheetName">[in_Config("InputFileSheetName").ToString.Trim]</InArgument>
         <OutArgument x:TypeArguments="x:Boolean" x:Key="out_IsRecordPresent">[IsRecordPresent]</OutArgument>
         <OutArgument x:TypeArguments="x:Boolean" x:Key="out_IsFileSizeZero">[IsFileSizeZero]</OutArgument>
         <OutArgument x:TypeArguments="sd:DataTable" x:Key="out_dt_ExcelData">[io_dt_TransactionData]</OutArgument>
         <OutArgument x:TypeArguments="x:String" x:Key="out_NoRecordColumn">[NoRecordColumn]</OutArgument>
       </ui:InvokeWorkflowFile.Arguments>
-    </ui:InvokeWorkflowFile>
-    <If Condition="[IsFileSizeZero]" DisplayName="If || Check for File Size" sap:VirtualizedContainerService.HintSize="433.6,52.8" sap2010:WorkflowViewState.IdRef="If_27">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
-          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+          <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </ui:InvokeWorkflowFile>
+    <If Condition="[IsFileSizeZero]" DisplayName="If || Check for File Size" sap:VirtualizedContainerService.HintSize="756,412.6666666666667" sap2010:WorkflowViewState.IdRef="If_27">
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
           <x:Boolean x:Key="IsPinned">False</x:Boolean>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
       <If.Then>
-        <Sequence DisplayName="Sequence || File Size Zero Sequence" sap:VirtualizedContainerService.HintSize="400,335.2" sap2010:WorkflowViewState.IdRef="Sequence_65">
+        <Sequence DisplayName="Sequence || File Size Zero Sequence" sap:VirtualizedContainerService.HintSize="376,248.66666666666666" sap2010:WorkflowViewState.IdRef="Sequence_65">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <ui:LogMessage DisplayName="Log Message || File size is zero log" sap:VirtualizedContainerService.HintSize="337.6,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_43" Level="Info" Message="[&quot;Exception: Input File size is zero&quot;]" />
-          <Throw DisplayName="Throw || File Size Zero" Exception="[New BusinessRuleException(in_Config(&quot;FileSizeZero&quot;).ToString.Trim)]" sap:VirtualizedContainerService.HintSize="337.6,90.4" sap2010:WorkflowViewState.IdRef="Throw_8" />
+          <ui:LogMessage DisplayName="Log Message || File size is zero log" sap:VirtualizedContainerService.HintSize="334,94.66666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_43" Level="Error" Message="[&quot;Exception: Input File size is zero&quot;]" />
+          <Throw DisplayName="@Throw || File Size Zero" Exception="[New BusinessRuleException(in_Config(&quot;FileSizeZero&quot;).ToString.Trim)]" sap:VirtualizedContainerService.HintSize="334,22" sap2010:WorkflowViewState.IdRef="Throw_8" />
         </Sequence>
       </If.Then>
       <If.Else>
-        <ui:LogMessage DisplayName="Log Message || File is not zero Log" sap:VirtualizedContainerService.HintSize="333.6,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_44" Level="Info" Message="[&quot;Info: File is greater than zero&quot;]" />
+        <ui:LogMessage DisplayName="Log Message || File is not zero Log" sap:VirtualizedContainerService.HintSize="334,94.66666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_44" Level="Info" Message="[&quot;Info: File is greater than zero&quot;]" />
       </If.Else>
     </If>
-    <If Condition="[IsColumnPresent]" DisplayName="If || Checking Existance of Required Columns" sap:VirtualizedContainerService.HintSize="433.6,52.8" sap2010:WorkflowViewState.IdRef="If_19">
+    <If Condition="[IsColumnPresent]" DisplayName="If || Checking Existance of Required Columns" sap:VirtualizedContainerService.HintSize="756,412.6666666666667" sap2010:WorkflowViewState.IdRef="If_19">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -198,17 +203,17 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
       <If.Then>
-        <ui:LogMessage DisplayName="Log Message || Required Column Present Log" sap:VirtualizedContainerService.HintSize="333.6,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_50" Level="Info" Message="[&quot;Info: Required Columns are present in Excel&quot;]" />
+        <ui:LogMessage DisplayName="Log Message || Required Column Present Log" sap:VirtualizedContainerService.HintSize="334,94.66666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_50" Level="Info" Message="[&quot;Info: Required Columns are present in Excel&quot;]" />
       </If.Then>
       <If.Else>
-        <Sequence DisplayName="Sequence || Required Column Not present Sequence" sap:VirtualizedContainerService.HintSize="400,335.2" sap2010:WorkflowViewState.IdRef="Sequence_36">
+        <Sequence DisplayName="Sequence || Required Column Not present Sequence" sap:VirtualizedContainerService.HintSize="376,248.66666666666666" sap2010:WorkflowViewState.IdRef="Sequence_36">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <ui:LogMessage DisplayName="Log Message || Column not present Log" sap:VirtualizedContainerService.HintSize="337.6,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_47" Level="Info" Message="[&quot;Exception: &quot; +MissingColumnName+&quot; Column is not present in the Input Excel File&quot;]" />
-          <Throw DisplayName="Throw || Required Columns not Present" Exception="[New BusinessRuleException(MissingColumnName+&quot; &quot;+in_Config(&quot;ColumnsNotPresent&quot;).ToString.Trim)]" sap:VirtualizedContainerService.HintSize="337.6,90.4" sap2010:WorkflowViewState.IdRef="Throw_4">
+          <ui:LogMessage DisplayName="Log Message || Column not present Log" sap:VirtualizedContainerService.HintSize="334,94.66666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_47" Level="Error" Message="[&quot;Exception: &quot; +MissingColumnName+&quot; Column is not present in the Input Excel File&quot;]" />
+          <Throw DisplayName="@Throw || Required Columns not Present" Exception="[New BusinessRuleException(MissingColumnName+&quot; &quot;+in_Config(&quot;ColumnsNotPresent&quot;).ToString.Trim)]" sap:VirtualizedContainerService.HintSize="334,22" sap2010:WorkflowViewState.IdRef="Throw_4">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -219,7 +224,7 @@
         </Sequence>
       </If.Else>
     </If>
-    <If Condition="[IsRecordPresent]" DisplayName="If || Check if Excel contains Data or not" sap:VirtualizedContainerService.HintSize="433.6,52.8" sap2010:WorkflowViewState.IdRef="If_26">
+    <If Condition="[IsRecordPresent]" DisplayName="If || Check if Excel contains Data or not" sap:VirtualizedContainerService.HintSize="756,412.6666666666667" sap2010:WorkflowViewState.IdRef="If_26">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -227,21 +232,21 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
       <If.Then>
-        <ui:LogMessage DisplayName="Log Message || Record Present Log" sap:VirtualizedContainerService.HintSize="333.6,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_46" Level="Info" Message="[&quot;Info: Record Present in Input Excel File&quot;]" />
+        <ui:LogMessage DisplayName="Log Message || Record Present Log" sap:VirtualizedContainerService.HintSize="334,94.66666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_46" Level="Info" Message="[&quot;Info: Record Present in Input Excel File&quot;]" />
       </If.Then>
       <If.Else>
-        <Sequence DisplayName="Sequence || Record not present Sequence" sap:VirtualizedContainerService.HintSize="400,335.2" sap2010:WorkflowViewState.IdRef="Sequence_63">
+        <Sequence DisplayName="Sequence || Record not present Sequence" sap:VirtualizedContainerService.HintSize="376,248.66666666666666" sap2010:WorkflowViewState.IdRef="Sequence_63">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <ui:LogMessage DisplayName="Log Message || Record Not Present Log" sap:VirtualizedContainerService.HintSize="337.6,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_40" Level="Info" Message="[&quot;Exception: Record not Present in Input Excel File for &quot;+NoRecordColumn+&quot; column&quot;]" />
-          <Throw DisplayName="Throw || No Data found in Excel" Exception="[New BusinessRuleException(in_Config(&quot;DataNotFoundinExcel&quot;).ToString.Trim+&quot; for &quot;+NoRecordColumn+&quot; Column&quot;)]" sap:VirtualizedContainerService.HintSize="337.6,90.4" sap2010:WorkflowViewState.IdRef="Throw_7" />
+          <ui:LogMessage DisplayName="Log Message || Record Not Present Log" sap:VirtualizedContainerService.HintSize="334,94.66666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_40" Level="Error" Message="[&quot;Exception: Record not Present in Input Excel File for &quot;+NoRecordColumn+&quot; column&quot;]" />
+          <Throw DisplayName="@Throw || No Data found in Excel" Exception="[New BusinessRuleException(in_Config(&quot;DataNotFoundinExcel&quot;).ToString.Trim+&quot; for &quot;+NoRecordColumn+&quot; Column&quot;)]" sap:VirtualizedContainerService.HintSize="334,22" sap2010:WorkflowViewState.IdRef="Throw_7" />
         </Sequence>
       </If.Else>
     </If>
-    <If Condition="[io_dt_TransactionData.Rows.Count = Directory.GetFiles(in_TodaysDateFolder,in_Config(&quot;InputFilePdfExtension&quot;).ToString.Trim).Count]" DisplayName="If || Check line items with no. of pdfs" sap:VirtualizedContainerService.HintSize="433.6,52.8" sap2010:WorkflowViewState.IdRef="If_20">
+    <If Condition="[io_dt_TransactionData.Rows.Count = Directory.GetFiles(in_TodaysDateFolder,in_Config(&quot;InputFilePdfExtension&quot;).ToString.Trim).Count]" DisplayName="If || Check line items with no. of pdfs" sap:VirtualizedContainerService.HintSize="756,52.666666666666664" sap2010:WorkflowViewState.IdRef="If_20">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -249,22 +254,22 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
       <If.Then>
-        <ui:LogMessage DisplayName="Log Message || Count of Pdf and number of Rows Matched Log" sap:VirtualizedContainerService.HintSize="333.6,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_41" Level="Info" Message="[&quot;Info: Count of Pdf and row of Input file matched&quot;]" />
+        <ui:LogMessage DisplayName="Log Message || Count of Pdf and number of Rows Matched Log" sap:VirtualizedContainerService.HintSize="334,94.66666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_41" Level="Info" Message="[&quot;Info: Count of Pdf and row of Input file matched&quot;]" />
       </If.Then>
       <If.Else>
-        <Sequence sap:VirtualizedContainerService.HintSize="400,335.2" sap2010:WorkflowViewState.IdRef="Sequence_38">
+        <Sequence DisplayName="Sequence: PDF count not matched" sap:VirtualizedContainerService.HintSize="376,248.66666666666666" sap2010:WorkflowViewState.IdRef="Sequence_38">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <ui:LogMessage DisplayName="Log Message || Count of Pdf not Matched Log" sap:VirtualizedContainerService.HintSize="337.6,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_48" Level="Info" Message="[&quot;Exception: Count of pdf files and Excel row not matched&quot;]" />
-          <Throw DisplayName="Throw || Count not match" Exception="[New BusinessRuleException(in_Config(&quot;CountNotMatch&quot;).ToString.Trim)]" sap:VirtualizedContainerService.HintSize="337.6,90.4" sap2010:WorkflowViewState.IdRef="Throw_5" />
+          <ui:LogMessage DisplayName="Log Message || Count of Pdf not Matched Log" sap:VirtualizedContainerService.HintSize="334,94.66666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_48" Level="Error" Message="[&quot;Exception: Count of pdf files and Excel row not matched&quot;]" />
+          <Throw DisplayName="@Throw || Count not match" Exception="[New BusinessRuleException(in_Config(&quot;CountNotMatch&quot;).ToString.Trim)]" sap:VirtualizedContainerService.HintSize="334,22" sap2010:WorkflowViewState.IdRef="Throw_5" />
         </Sequence>
       </If.Else>
     </If>
-    <ui:AddDataColumn x:TypeArguments="x:Object" AllowDBNull="{x:Null}" AutoIncrement="{x:Null}" Column="{x:Null}" DefaultValue="{x:Null}" MaxLength="{x:Null}" Unique="{x:Null}" ColumnName="[in_Config(&quot;StatusColumnstobeAdded&quot;).ToString.Trim]" DataTable="[io_dt_TransactionData]" DisplayName="Add Data Column || Status" sap:VirtualizedContainerService.HintSize="433.6,188" sap2010:WorkflowViewState.IdRef="AddDataColumn`1_1" />
-    <ui:AddDataColumn x:TypeArguments="x:Object" AllowDBNull="{x:Null}" AutoIncrement="{x:Null}" Column="{x:Null}" DefaultValue="{x:Null}" MaxLength="{x:Null}" Unique="{x:Null}" ColumnName="[in_Config(&quot;RemarksColumntobeAdded&quot;).ToString.Trim]" DataTable="[io_dt_TransactionData]" DisplayName="Add Data Column || Remarks" sap:VirtualizedContainerService.HintSize="433.6,188" sap2010:WorkflowViewState.IdRef="AddDataColumn`1_2" />
+    <ui:AddDataColumn x:TypeArguments="x:Object" AllowDBNull="{x:Null}" AutoIncrement="{x:Null}" Column="{x:Null}" DefaultValue="{x:Null}" MaxLength="{x:Null}" Unique="{x:Null}" ColumnName="[in_Config(&quot;StatusColumnstobeAdded&quot;).ToString.Trim]" DataTable="[io_dt_TransactionData]" DisplayName="Add Data Column || Status" sap:VirtualizedContainerService.HintSize="756,190" sap2010:WorkflowViewState.IdRef="AddDataColumn`1_1" />
+    <ui:AddDataColumn x:TypeArguments="x:Object" AllowDBNull="{x:Null}" AutoIncrement="{x:Null}" Column="{x:Null}" DefaultValue="{x:Null}" MaxLength="{x:Null}" Unique="{x:Null}" ColumnName="[in_Config(&quot;RemarksColumntobeAdded&quot;).ToString.Trim]" DataTable="[io_dt_TransactionData]" DisplayName="Add Data Column || Remarks" sap:VirtualizedContainerService.HintSize="756,190" sap2010:WorkflowViewState.IdRef="AddDataColumn`1_2" />
     <ui:AddDataColumn x:TypeArguments="x:Object" AllowDBNull="{x:Null}" AutoIncrement="{x:Null}" Column="{x:Null}" DefaultValue="{x:Null}" MaxLength="{x:Null}" Unique="{x:Null}" ColumnName="[in_Config(&quot;BotProcessDateAndTime&quot;).ToString.Trim]" DataTable="[io_dt_TransactionData]" DisplayName="Add Data Column || Process Date and Time" sap:VirtualizedContainerService.HintSize="433.6,188" sap2010:WorkflowViewState.IdRef="AddDataColumn`1_3" />
     <ui:LogMessage DisplayName="Log Message || Excel Formatting Completed Log" sap:VirtualizedContainerService.HintSize="433.6,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_49" Level="Info" Message="[&quot;Info: Excel Formatting Workflow&quot;]" />
   </Sequence>

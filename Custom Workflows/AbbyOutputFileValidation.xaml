@@ -6,7 +6,7 @@
   <VisualBasic.Settings>
     <x:Null />
   </VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>748.8,3436.8</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1153.3333333333333,1959.3333333333333</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>AbbyOutputFileValidation_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="29">
@@ -93,7 +93,7 @@
       <AssemblyReference>Microsoft.Win32.Primitives</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="Verify Abby Output file" DisplayName="AbbyOutputFileValidation" sap:VirtualizedContainerService.HintSize="540,3372" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="Verify Abby Output file" DisplayName="AbbyOutputFileValidation" sap:VirtualizedContainerService.HintSize="840,1894.6666666666667" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:Boolean" Name="IsAbbyOutputFileExists" />
       <Variable x:TypeArguments="x:Boolean" Name="IsColumnPresent" />
@@ -108,69 +108,26 @@
         <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:LogMessage DisplayName="Log Message || Abby Output Validation Start Log" sap:VirtualizedContainerService.HintSize="477.6,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Start: Abby Output File Validation Workflow&quot;]" />
-    <ui:PathExists Resource="{x:Null}" DisplayName="Path Exists || Check if Abby File Exists or not" Exists="[IsAbbyOutputFileExists]" sap:VirtualizedContainerService.HintSize="477.6,90.4" sap2010:WorkflowViewState.IdRef="PathExists_1" Path="[in_Config(&quot;OutputHotFolder&quot;).ToString.Trim+&quot;\&quot;+in_Config(&quot;AbbyOutputFileName&quot;).ToString.Trim+Now.ToString(in_Config(&quot;AbbyOutputDateFormat&quot;).ToString.Trim)+&quot;.xlsx&quot;]" PathType="File" />
-    <If Condition="[IsAbbyOutputFileExists]" DisplayName="If || Check if Abby File is present or not" sap:VirtualizedContainerService.HintSize="477.6,613.6" sap2010:WorkflowViewState.IdRef="If_1">
-      <sap:WorkflowViewStateService.ViewState>
-        <scg:Dictionary x:TypeArguments="x:String, x:Object">
-          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-          <x:Boolean x:Key="IsPinned">False</x:Boolean>
-        </scg:Dictionary>
-      </sap:WorkflowViewStateService.ViewState>
-      <If.Then>
-        <ui:LogMessage DisplayName="Log Message || Abby Output File Present Log" sap:VirtualizedContainerService.HintSize="333.6,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Info" Message="[&quot;Info: Abby Output File present&quot;]" />
-      </If.Then>
-      <If.Else>
-        <Sequence DisplayName="Sequence || Abby Output File not present" sap:VirtualizedContainerService.HintSize="400,335.2" sap2010:WorkflowViewState.IdRef="Sequence_2">
-          <sap:WorkflowViewStateService.ViewState>
-            <scg:Dictionary x:TypeArguments="x:String, x:Object">
-              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-            </scg:Dictionary>
-          </sap:WorkflowViewStateService.ViewState>
-          <ui:LogMessage DisplayName="Log Message || Abby Output File not Present Log" sap:VirtualizedContainerService.HintSize="337.6,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_4" Level="Info" Message="[&quot;Info: Abby Output File present&quot;]">
-            <sap:WorkflowViewStateService.ViewState>
-              <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                <x:Boolean x:Key="IsPinned">False</x:Boolean>
-              </scg:Dictionary>
-            </sap:WorkflowViewStateService.ViewState>
-          </ui:LogMessage>
-          <Throw DisplayName="Throw || Abby File not present" Exception="[New BusinessRuleException(in_Config(&quot;AbbyFileNotPresent&quot;).ToString.Trim)]" sap:VirtualizedContainerService.HintSize="337.6,90.4" sap2010:WorkflowViewState.IdRef="Throw_1" />
-        </Sequence>
-      </If.Else>
-    </If>
-    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Custom Workflows\ExcelDataValidationWorkflow.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="477.6,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" UnSafe="False" WorkflowFileName="Custom Workflows\ExcelDataValidationWorkflow.xaml">
+    <ui:LogMessage DisplayName="Log Message || Abby Output Validation Start Log" sap:VirtualizedContainerService.HintSize="798,94.66666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Start: Abby Output File Validation Workflow&quot;]" />
+    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="Validate ABBYY file" DisplayName="Custom Workflows\ExcelDataValidationWorkflow.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="798,144.66666666666666" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" UnSafe="False" WorkflowFileName="Custom Workflows\ExcelDataValidationWorkflow.xaml">
       <ui:InvokeWorkflowFile.Arguments>
-        <InArgument x:TypeArguments="x:String" x:Key="in_ColumnsName">
-          <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_Config(&quot;AbbyColumnCheck&quot;).ToString" />
-        </InArgument>
-        <OutArgument x:TypeArguments="x:Boolean" x:Key="out_IsColumnPresent">
-          <VisualBasicReference x:TypeArguments="x:Boolean" ExpressionText="IsColumnPresent" />
-        </OutArgument>
-        <OutArgument x:TypeArguments="x:String" x:Key="out_MissingColumnName">
-          <VisualBasicReference x:TypeArguments="x:String" ExpressionText="MissingColumnName" />
-        </OutArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_ExcelFilePath">
-          <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_Config(&quot;OutputHotFolder&quot;).ToString.Trim+&quot;\&quot;+in_Config(&quot;AbbyOutputFileName&quot;).ToString.Trim+Now.ToString(in_Config(&quot;AbbyOutputDateFormat&quot;).ToString.Trim)+&quot;.xlsx&quot;" />
-        </InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_ExcelSheetName">
-          <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_Config(&quot;AbbyFileSheetName&quot;).ToString.Trim" />
-        </InArgument>
-        <OutArgument x:TypeArguments="x:Boolean" x:Key="out_IsRecordPresent">
-          <VisualBasicReference x:TypeArguments="x:Boolean" ExpressionText="IsRecordPresent" />
-        </OutArgument>
-        <OutArgument x:TypeArguments="x:Boolean" x:Key="out_IsFileSizeZero">
-          <VisualBasicReference x:TypeArguments="x:Boolean" ExpressionText="IsFileSizeZero" />
-        </OutArgument>
-        <OutArgument x:TypeArguments="sd:DataTable" x:Key="out_dt_ExcelData">
-          <VisualBasicReference x:TypeArguments="sd:DataTable" ExpressionText="out_dt_AbbyOutputResult" />
-        </OutArgument>
-        <OutArgument x:TypeArguments="x:String" x:Key="out_NoRecordColumn">
-          <VisualBasicReference x:TypeArguments="x:String" ExpressionText="NoRecordColumn" />
-        </OutArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_ColumnsName">[in_Config("AbbyColumnCheck").ToString]</InArgument>
+        <OutArgument x:TypeArguments="x:Boolean" x:Key="out_IsColumnPresent">[IsColumnPresent]</OutArgument>
+        <OutArgument x:TypeArguments="x:String" x:Key="out_MissingColumnName">[MissingColumnName]</OutArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_ExcelFilePath">[path.Combine(in_Config("OutputHotFolder").ToString.Trim,in_Config("AbbyOutputFileName").ToString.Trim,Now.ToString(in_Config("AbbyOutputDateFormat").ToString.Trim),".xlsx")]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_ExcelSheetName">[in_Config("AbbyFileSheetName").ToString.Trim]</InArgument>
+        <OutArgument x:TypeArguments="x:Boolean" x:Key="out_IsRecordPresent">[IsRecordPresent]</OutArgument>
+        <OutArgument x:TypeArguments="x:Boolean" x:Key="out_IsFileSizeZero">[IsFileSizeZero]</OutArgument>
+        <OutArgument x:TypeArguments="x:String" x:Key="out_NoRecordColumn">[NoRecordColumn]</OutArgument>
+        <OutArgument x:TypeArguments="sd:DataTable" x:Key="out_dt_ExcelData">[out_dt_AbbyOutputResult]</OutArgument>
       </ui:InvokeWorkflowFile.Arguments>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
     </ui:InvokeWorkflowFile>
-    <If Condition="[IsFileSizeZero]" DisplayName="If || Check if Abby Output File size is zero" sap:VirtualizedContainerService.HintSize="477.6,718.4" sap2010:WorkflowViewState.IdRef="If_2">
+    <If Condition="[IsFileSizeZero]" DisplayName="If || Check if Abby Output File size is zero" sap:VirtualizedContainerService.HintSize="798,412.6666666666667" sap2010:WorkflowViewState.IdRef="If_2">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -178,29 +135,29 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
       <If.Then>
-        <Sequence DisplayName="Sequence || Abby Output File Size Zero Sequence" sap:VirtualizedContainerService.HintSize="400,335.2" sap2010:WorkflowViewState.IdRef="Sequence_7">
+        <Sequence DisplayName="Sequence || Abby Output File Size Zero Sequence" sap:VirtualizedContainerService.HintSize="376,248.66666666666666" sap2010:WorkflowViewState.IdRef="Sequence_7">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               <x:Boolean x:Key="IsPinned">False</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <ui:LogMessage DisplayName="Log Message || Abby Output File size zero Log" sap:VirtualizedContainerService.HintSize="337.6,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_11" Level="Info" Message="[&quot;Exception: Abby Output File size is zero&quot;]" />
-          <Throw DisplayName="Throw || Abby Output File size is zero" Exception="[New BusinessRuleException(in_Config(&quot;AbbyFileSizeZero&quot;).ToString.Trim)]" sap:VirtualizedContainerService.HintSize="337.6,90.4" sap2010:WorkflowViewState.IdRef="Throw_5" />
+          <ui:LogMessage DisplayName="Log Message || Abby Output File size zero Log" sap:VirtualizedContainerService.HintSize="334,94.66666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_11" Level="Error" Message="[&quot;Exception: Abby Output File size is zero&quot;]" />
+          <Throw DisplayName="@Throw || Abby Output File size is zero" Exception="[New BusinessRuleException(in_Config(&quot;AbbyFileSizeZero&quot;).ToString.Trim)]" sap:VirtualizedContainerService.HintSize="334,22" sap2010:WorkflowViewState.IdRef="Throw_5" />
         </Sequence>
       </If.Then>
       <If.Else>
-        <Sequence DisplayName="Sequence || Abby Output File size not zero Sequence" sap:VirtualizedContainerService.HintSize="400,204.8" sap2010:WorkflowViewState.IdRef="Sequence_3">
+        <Sequence DisplayName="Sequence || Abby Output File size not zero Sequence" sap:VirtualizedContainerService.HintSize="376,186.66666666666666" sap2010:WorkflowViewState.IdRef="Sequence_3">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <ui:LogMessage DisplayName="Log Message || Abby Output File size not zero log" sap:VirtualizedContainerService.HintSize="337.6,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_5" Level="Info" Message="[&quot;Info: Abby Output File size is not zero&quot;]" />
+          <ui:LogMessage DisplayName="Log Message || Abby Output File size not zero log" sap:VirtualizedContainerService.HintSize="334,94.66666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_5" Level="Info" Message="[&quot;Info: Abby Output File size is not zero&quot;]" />
         </Sequence>
       </If.Else>
     </If>
-    <If Condition="[IsColumnPresent]" DisplayName="If || Check if Abby Column is present or not" sap:VirtualizedContainerService.HintSize="477.6,613.6" sap2010:WorkflowViewState.IdRef="If_3">
+    <If Condition="[IsColumnPresent]" DisplayName="If || Check if Abby Column is present or not" sap:VirtualizedContainerService.HintSize="798,412.6666666666667" sap2010:WorkflowViewState.IdRef="If_3">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -208,36 +165,36 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
       <If.Then>
-        <ui:LogMessage DisplayName="Log Message || Abby Column Present Log" sap:VirtualizedContainerService.HintSize="333.6,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_7" Level="Info" Message="[&quot;Info: Required columns are present in Abby Output file&quot;]" />
+        <ui:LogMessage DisplayName="Log Message || Abby Column Present Log" sap:VirtualizedContainerService.HintSize="334,94.66666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_7" Level="Info" Message="[&quot;Info: Required columns are present in Abby Output file&quot;]" />
       </If.Then>
       <If.Else>
-        <Sequence DisplayName="Sequence || Abby column not present" sap:VirtualizedContainerService.HintSize="400,335.2" sap2010:WorkflowViewState.IdRef="Sequence_5">
+        <Sequence DisplayName="Sequence || Abby column not present" sap:VirtualizedContainerService.HintSize="376,248.66666666666666" sap2010:WorkflowViewState.IdRef="Sequence_5">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <ui:LogMessage DisplayName="Log Message || Abby Column not present" sap:VirtualizedContainerService.HintSize="337.6,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_8" Level="Info" Message="[&quot;Exception: &quot;+MissingColumnName+&quot; is not present in Abby Output File&quot;]" />
-          <Throw DisplayName="Throw || Abby Column not present" Exception="[New BusinessRuleException(in_Config(&quot;RequiredColumnNotPresentInAbbyFile&quot;).ToString.Trim)]" sap:VirtualizedContainerService.HintSize="337.6,90.4" sap2010:WorkflowViewState.IdRef="Throw_3" />
+          <ui:LogMessage DisplayName="Log Message || Abby Column not present" sap:VirtualizedContainerService.HintSize="334,94.66666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_8" Level="Error" Message="[&quot;Exception: &quot;+MissingColumnName+&quot; is not present in Abby Output File&quot;]" />
+          <Throw DisplayName="@Throw || Abby Column not present" Exception="[New BusinessRuleException(in_Config(&quot;RequiredColumnNotPresentInAbbyFile&quot;).ToString.Trim)]" sap:VirtualizedContainerService.HintSize="334,22" sap2010:WorkflowViewState.IdRef="Throw_3" />
         </Sequence>
       </If.Else>
     </If>
-    <If Condition="[IsRecordPresent]" DisplayName="If || Check if record is present or not" sap:VirtualizedContainerService.HintSize="477.6,613.6" sap2010:WorkflowViewState.IdRef="If_4">
+    <If Condition="[IsRecordPresent]" DisplayName="If || Check if record is present or not" sap:VirtualizedContainerService.HintSize="798,412.6666666666667" sap2010:WorkflowViewState.IdRef="If_4">
       <If.Then>
-        <ui:LogMessage DisplayName="Log Message || Record Present Log" sap:VirtualizedContainerService.HintSize="333.6,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_9" Level="Info" Message="[&quot;Info: Record present for all required columns&quot;]" />
+        <ui:LogMessage DisplayName="Log Message || Record Present Log" sap:VirtualizedContainerService.HintSize="334,94.66666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_9" Level="Info" Message="[&quot;Info: Record present for all required columns&quot;]" />
       </If.Then>
       <If.Else>
-        <Sequence DisplayName="Sequence || No record Sequence" sap:VirtualizedContainerService.HintSize="400,335.2" sap2010:WorkflowViewState.IdRef="Sequence_6">
+        <Sequence DisplayName="Sequence || No record Sequence" sap:VirtualizedContainerService.HintSize="376,248.66666666666666" sap2010:WorkflowViewState.IdRef="Sequence_6">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <ui:LogMessage DisplayName="Log Message || Record not Present Log" sap:VirtualizedContainerService.HintSize="337.6,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_10" Level="Info" Message="[&quot;Info: Record not present for &quot;+NoRecordColumn+&quot; column&quot;]" />
-          <Throw DisplayName="Throw || No Record Column" Exception="[New BusinessRuleException(in_Config(&quot;AbbyFileNoRecord&quot;).ToString.Trim+&quot; &quot;+NoRecordColumn)]" sap:VirtualizedContainerService.HintSize="337.6,90.4" sap2010:WorkflowViewState.IdRef="Throw_4" />
+          <ui:LogMessage DisplayName="Log Message || Record not Present Log" sap:VirtualizedContainerService.HintSize="334,94.66666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_10" Level="Error" Message="[&quot;Info: Record not present for &quot;+NoRecordColumn+&quot; column&quot;]" />
+          <Throw DisplayName="@Throw || No Record Column" Exception="[New BusinessRuleException(in_Config(&quot;AbbyFileNoRecord&quot;).ToString.Trim+&quot; &quot;+NoRecordColumn)]" sap:VirtualizedContainerService.HintSize="334,22" sap2010:WorkflowViewState.IdRef="Throw_4" />
         </Sequence>
       </If.Else>
     </If>
-    <ui:LogMessage DisplayName="Log Message || Abby Output Validation Completed Log" sap:VirtualizedContainerService.HintSize="477.6,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[&quot;Completed: Abby Output File Validation Workflow&quot;]" />
+    <ui:LogMessage DisplayName="Log Message || Abby Output Validation Completed Log" sap:VirtualizedContainerService.HintSize="798,94.66666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[&quot;Completed: Abby Output File Validation Workflow&quot;]" />
   </Sequence>
 </Activity>

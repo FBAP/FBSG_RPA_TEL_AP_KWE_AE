@@ -7,7 +7,7 @@
   <this:SaveAttachmentWorkFlow.in_mail>
     <InArgument x:TypeArguments="snm:MailMessage" />
   </this:SaveAttachmentWorkFlow.in_mail>
-  <sap:VirtualizedContainerService.HintSize>748.8,932</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>878,679.3333333333334</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>ActivityBuilder_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="50">
@@ -114,7 +114,7 @@
       <AssemblyReference>System.ServiceModel.Activities</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <If Condition="[in_mail.Attachments.Where(Function(MailAttachment) MailAttachment.Name.ToLower.Contains(&quot;.zip&quot;)).Count &gt; 0]" DisplayName="If || Check for Zip file" sap:VirtualizedContainerService.HintSize="518.4,867.2" sap2010:WorkflowViewState.IdRef="If_6">
+  <If Condition="[in_mail.Attachments.Where(Function(MailAttachment) MailAttachment.Name.ToLower.Contains(&quot;.zip&quot;)).Count &gt; 0]" DisplayName="If || Check for Zip file" sap:VirtualizedContainerService.HintSize="828,614.6666666666666" sap2010:WorkflowViewState.IdRef="If_6">
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -122,30 +122,35 @@
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
     <If.Then>
-      <Sequence DisplayName="Sequence || Zip Attachment present Sequence" sap:VirtualizedContainerService.HintSize="440.8,225.6" sap2010:WorkflowViewState.IdRef="Sequence_15">
+      <Sequence DisplayName="Sequence || Zip Attachment present Sequence" sap:VirtualizedContainerService.HintSize="402.6666666666667,236.66666666666666" sap2010:WorkflowViewState.IdRef="Sequence_15">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
-        <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="SaveZipFileAttachment.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="378.4,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" UnSafe="False" WorkflowFileName="Custom Workflows\SaveZipFileAttachment.xaml">
+        <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="Save zip file attachment" DisplayName="SaveZipFileAttachment.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="360.6666666666667,144.66666666666666" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" UnSafe="False" WorkflowFileName="Custom Workflows\SaveZipFileAttachment.xaml">
           <ui:InvokeWorkflowFile.Arguments>
             <InArgument x:TypeArguments="snm:MailMessage" x:Key="in_mail">[in_mail]</InArgument>
             <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">[in_Config]</InArgument>
             <InArgument x:TypeArguments="x:String" x:Key="in_TodaysDateFolder">[in_TodaysDateFolder]</InArgument>
           </ui:InvokeWorkflowFile.Arguments>
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
         </ui:InvokeWorkflowFile>
       </Sequence>
     </If.Then>
     <If.Else>
-      <Sequence DisplayName="Sequence || Attachment without Zip sequence" sap:VirtualizedContainerService.HintSize="400,463.2" sap2010:WorkflowViewState.IdRef="Sequence_16">
+      <Sequence DisplayName="Sequence || Attachment without Zip sequence" sap:VirtualizedContainerService.HintSize="379.3333333333333,450.6666666666667" sap2010:WorkflowViewState.IdRef="Sequence_16">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
-        <ui:LogMessage DisplayName="Log Message || Attachment without Zip Log" sap:VirtualizedContainerService.HintSize="337.6,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Info: Zip attachment not present&quot;]" />
-        <ui:SaveMailAttachments Attachments="{x:Null}" DisplayName="Save Attachments || Attachmnet without Zip" ExcludeInlineAttachments="True" FolderPath="[in_TodaysDateFolder]" sap:VirtualizedContainerService.HintSize="337.6,88" sap2010:WorkflowViewState.IdRef="SaveMailAttachments_2" Message="[in_mail]" OverwriteExisting="False" />
+        <ui:LogMessage DisplayName="Log Message || Attachment without Zip Log" sap:VirtualizedContainerService.HintSize="337.3333333333333,94.66666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Info: Zip attachment not present&quot;]" />
+        <ui:SaveMailAttachments Attachments="{x:Null}" DisplayName="Save Attachments || Attachmnet without Zip" ExcludeInlineAttachments="True" FolderPath="[in_TodaysDateFolder]" sap:VirtualizedContainerService.HintSize="337.3333333333333,93.33333333333333" sap2010:WorkflowViewState.IdRef="SaveMailAttachments_2" Message="[in_mail]" OverwriteExisting="False" />
         <Delay DisplayName="Delay || Saving Attachment" Duration="[TimeSpan.FromSeconds(CInt(in_Config(&quot;DelayForSavingAttachment&quot;)))]" sap:VirtualizedContainerService.HintSize="337.6,90.4" sap2010:WorkflowViewState.IdRef="Delay_3" />
       </Sequence>
     </If.Else>

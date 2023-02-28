@@ -7,7 +7,7 @@
   <VisualBasic.Settings>
     <x:Null />
   </VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>748.8,3048</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1153.3333333333333,2225.3333333333335</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>MatchAbbyOutpuDetailsWithInputFile_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -91,15 +91,15 @@
       <AssemblyReference>System.Runtime.Serialization.Primitives</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="Match Abby Output Details with Input file" DisplayName="MatchAbbyOutpuDetailsWithInputFile" sap:VirtualizedContainerService.HintSize="540,2983.2" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="Match Abby Output Details with Input file" DisplayName="MatchAbbyOutpuDetailsWithInputFile" sap:VirtualizedContainerService.HintSize="798,2160.6666666666665" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
         <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:LogMessage DisplayName="Log Message || Match details Start Log" sap:VirtualizedContainerService.HintSize="477.6,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Start: Match Abbay and Inout details workflow&quot;]" />
-    <If Condition="[in_dt_AbbyOutputResult.AsEnumerable.Where(Function(c) c(in_Config(&quot;Abby_InvoiceNoColumn&quot;).ToString).ToString.ToLower.Trim.Equals(in_TransactionItem.Item(in_Config(&quot;InvoiceColumnName&quot;).ToString).ToString.ToLower.Trim)).ToArray().Length&gt;0]" DisplayName="If || Match Invoice Number" sap:VirtualizedContainerService.HintSize="477.6,613.6" sap2010:WorkflowViewState.IdRef="If_1">
+    <ui:LogMessage DisplayName="Log Message || Match details Start Log" sap:VirtualizedContainerService.HintSize="756,94.66666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Start: Match Abbyy and Input details workflow&quot;]" />
+    <If Condition="[in_dt_AbbyOutputResult.AsEnumerable.Where(Function(c) c(in_Config(&quot;Abby_InvoiceNoColumn&quot;).ToString).ToString.ToLower.Trim.Equals(in_TransactionItem.Item(in_Config(&quot;InvoiceColumnName&quot;).ToString).ToString.ToLower.Trim)).ToArray().Length&gt;0]" DisplayName="If || Match Invoice Number" sap:VirtualizedContainerService.HintSize="756,412.6666666666667" sap2010:WorkflowViewState.IdRef="If_1">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -107,53 +107,53 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
       <If.Then>
-        <ui:LogMessage DisplayName="Log Message || Invoice Number Matched Log" sap:VirtualizedContainerService.HintSize="333.6,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Info" Message="[&quot;Info: Invoice number matched for this invoice number: &quot;+in_TransactionItem.Item(in_Config(&quot;InvoiceColumnName&quot;).ToString).ToString]" />
+        <ui:LogMessage DisplayName="Log Message || Invoice Number Matched Log" sap:VirtualizedContainerService.HintSize="334,94.66666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Info" Message="[&quot;Info: Invoice number matched for this invoice number: &quot;+in_TransactionItem.Item(in_Config(&quot;InvoiceColumnName&quot;).ToString).ToString]" />
       </If.Then>
       <If.Else>
-        <Sequence DisplayName="Sequence || Invoice Number not matched Sequence" sap:VirtualizedContainerService.HintSize="400,335.2" sap2010:WorkflowViewState.IdRef="Sequence_3">
+        <Sequence DisplayName="Sequence || Invoice Number not matched Sequence" sap:VirtualizedContainerService.HintSize="376,248.66666666666666" sap2010:WorkflowViewState.IdRef="Sequence_3">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <ui:LogMessage DisplayName="Log Message || Invoice Number not matched Log" sap:VirtualizedContainerService.HintSize="337.6,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_4" Message="[&quot;Exception: Invoice number not matched for this invoice number: &quot;+in_TransactionItem.Item(in_Config(&quot;InvoiceColumnName&quot;).ToString).ToString]" />
-          <Throw DisplayName="Throw || Invoice Number" Exception="[New BusinessRuleException(in_Config(&quot;InvoiceNumberNotMatched&quot;).ToString.Trim)]" sap:VirtualizedContainerService.HintSize="337.6,90.4" sap2010:WorkflowViewState.IdRef="Throw_1" />
+          <ui:LogMessage DisplayName="Log Message || Invoice Number not matched Log" sap:VirtualizedContainerService.HintSize="334,94.66666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_4" Level="Error" Message="[&quot;Exception: Invoice number not matched for this invoice number: &quot;+in_TransactionItem.Item(in_Config(&quot;InvoiceColumnName&quot;).ToString).ToString]" />
+          <Throw DisplayName="@Throw || Invoice Number" Exception="[New BusinessRuleException(in_Config(&quot;InvoiceNumberNotMatched&quot;).ToString.Trim)]" sap:VirtualizedContainerService.HintSize="334,22" sap2010:WorkflowViewState.IdRef="Throw_1" />
         </Sequence>
       </If.Else>
     </If>
-    <If Condition="[in_dt_AbbyOutputResult.AsEnumerable.Where(Function(c) c(in_Config(&quot;Abby_InvoiceNoColumn&quot;).ToString).ToString.ToLower.Trim.Equals(in_TransactionItem.Item(in_Config(&quot;InvoiceColumnName&quot;).ToString).ToString.ToLower.Trim))(0).item(in_Config(&quot;Abby_HWAB_NoColumn&quot;).ToString).ToString.Trim.Equals(in_TransactionItem.Item(in_Config(&quot;HAWBColumnName&quot;).ToString).ToString.Trim)]" DisplayName="If || HAWB Number Matched" sap:VirtualizedContainerService.HintSize="477.6,613.6" sap2010:WorkflowViewState.IdRef="If_2">
+    <If Condition="[in_dt_AbbyOutputResult.AsEnumerable.Where(Function(c) c(in_Config(&quot;Abby_InvoiceNoColumn&quot;).ToString).ToString.ToLower.Trim.Equals(in_TransactionItem.Item(in_Config(&quot;InvoiceColumnName&quot;).ToString).ToString.ToLower.Trim))(0).item(in_Config(&quot;Abby_HWAB_NoColumn&quot;).ToString).ToString.Trim.Equals(in_TransactionItem.Item(in_Config(&quot;HAWBColumnName&quot;).ToString).ToString.Trim)]" DisplayName="If || HAWB Number Matched" sap:VirtualizedContainerService.HintSize="756,412.6666666666667" sap2010:WorkflowViewState.IdRef="If_2">
       <If.Then>
-        <ui:LogMessage DisplayName="Log Message || HAWB Number matched Log" sap:VirtualizedContainerService.HintSize="333.6,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_5" Level="Info" Message="[&quot;Info: HAWB number matched for this invoice number: &quot;+in_TransactionItem.Item(in_Config(&quot;InvoiceColumnName&quot;).ToString).ToString]" />
+        <ui:LogMessage DisplayName="Log Message || HAWB Number matched Log" sap:VirtualizedContainerService.HintSize="334,94.66666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_5" Level="Info" Message="[&quot;Info: HAWB number matched for this invoice number: &quot;+in_TransactionItem.Item(in_Config(&quot;InvoiceColumnName&quot;).ToString).ToString]" />
       </If.Then>
       <If.Else>
-        <Sequence DisplayName="Sequence || HAWB number not matched Sequence" sap:VirtualizedContainerService.HintSize="400,335.2" sap2010:WorkflowViewState.IdRef="Sequence_5">
+        <Sequence DisplayName="Sequence || HAWB number not matched Sequence" sap:VirtualizedContainerService.HintSize="376,248.66666666666666" sap2010:WorkflowViewState.IdRef="Sequence_5">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <ui:LogMessage DisplayName="Log Message || HAWB Number not matched Log" sap:VirtualizedContainerService.HintSize="337.6,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_6" Level="Info" Message="[&quot;Exception: HAWB number not matched for this invoice number: &quot;+in_TransactionItem.Item(in_Config(&quot;InvoiceColumnName&quot;).ToString).ToString]" />
-          <Throw DisplayName="Throw || HAWB not present" Exception="[New BusinessRuleException(in_Config(&quot;HAWBNumberNotMatched&quot;).ToString.Trim)]" sap:VirtualizedContainerService.HintSize="337.6,90.4" sap2010:WorkflowViewState.IdRef="Throw_2" />
+          <ui:LogMessage DisplayName="Log Message || HAWB Number not matched Log" sap:VirtualizedContainerService.HintSize="334,94.66666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_6" Level="Error" Message="[&quot;Exception: HAWB number not matched for this invoice number: &quot;+in_TransactionItem.Item(in_Config(&quot;InvoiceColumnName&quot;).ToString).ToString]" />
+          <Throw DisplayName="@Throw || HAWB not present" Exception="[New BusinessRuleException(in_Config(&quot;HAWBNumberNotMatched&quot;).ToString.Trim)]" sap:VirtualizedContainerService.HintSize="334,22" sap2010:WorkflowViewState.IdRef="Throw_2" />
         </Sequence>
       </If.Else>
     </If>
-    <If Condition="[in_dt_AbbyOutputResult.AsEnumerable.Where(Function(c) c(in_Config(&quot;Abby_InvoiceNoColumn&quot;).ToString).ToString.ToLower.Trim.Equals(in_TransactionItem.Item(in_Config(&quot;InvoiceColumnName&quot;).ToString).ToString.ToLower.Trim))(0).item(in_Config(&quot;Abby_TotalAmountColumn&quot;).ToString).ToString.Trim.Equals(in_TransactionItem.Item(in_Config(&quot;TotalAmountColumn&quot;).ToString).ToString.Trim)]" DisplayName="If || Invoice Amount matched or not" sap:VirtualizedContainerService.HintSize="477.6,613.6" sap2010:WorkflowViewState.IdRef="If_3">
+    <If Condition="[in_dt_AbbyOutputResult.AsEnumerable.Where(Function(c) c(in_Config(&quot;Abby_InvoiceNoColumn&quot;).ToString).ToString.ToLower.Trim.Equals(in_TransactionItem.Item(in_Config(&quot;InvoiceColumnName&quot;).ToString).ToString.ToLower.Trim))(0).item(in_Config(&quot;Abby_TotalAmountColumn&quot;).ToString).ToString.Trim.Equals(in_TransactionItem.Item(in_Config(&quot;TotalAmountColumn&quot;).ToString).ToString.Trim)]" DisplayName="If || Invoice Amount matched or not" sap:VirtualizedContainerService.HintSize="756,412.6666666666667" sap2010:WorkflowViewState.IdRef="If_3">
       <If.Then>
-        <ui:LogMessage DisplayName="Log Message || Invoice Amount Matched Log" sap:VirtualizedContainerService.HintSize="333.6,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_7" Level="Info" Message="[&quot;Info: Total Amount matched for this invoice number: &quot;+in_TransactionItem.Item(in_Config(&quot;InvoiceColumnName&quot;).ToString).ToString]" />
+        <ui:LogMessage DisplayName="Log Message || Invoice Amount Matched Log" sap:VirtualizedContainerService.HintSize="334,94.66666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_7" Level="Info" Message="[&quot;Info: Total Amount matched for this invoice number: &quot;+in_TransactionItem.Item(in_Config(&quot;InvoiceColumnName&quot;).ToString).ToString]" />
       </If.Then>
       <If.Else>
-        <Sequence sap:VirtualizedContainerService.HintSize="400,335.2" sap2010:WorkflowViewState.IdRef="Sequence_7">
+        <Sequence DisplayName="Sequence:Invoice amount not matched" sap:VirtualizedContainerService.HintSize="376,248.66666666666666" sap2010:WorkflowViewState.IdRef="Sequence_7">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <ui:LogMessage DisplayName="Log Message || Invoice Amount not Matched Log" sap:VirtualizedContainerService.HintSize="337.6,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_8" Level="Info" Message="[&quot;Exception: Total Amount not matched for this invoice number: &quot;+in_TransactionItem.Item(in_Config(&quot;InvoiceColumnName&quot;).ToString).ToString]" />
-          <Throw DisplayName="Throw || Total Amount not present" Exception="[New BusinessRuleException(in_Config(&quot;TotlaAmountNotMatched&quot;).ToString.Trim)]" sap:VirtualizedContainerService.HintSize="337.6,90.4" sap2010:WorkflowViewState.IdRef="Throw_3" />
+          <ui:LogMessage DisplayName="Log Message || Invoice Amount not Matched Log" sap:VirtualizedContainerService.HintSize="334,94.66666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_8" Level="Error" Message="[&quot;Exception: Total Amount not matched for this invoice number: &quot;+in_TransactionItem.Item(in_Config(&quot;InvoiceColumnName&quot;).ToString).ToString]" />
+          <Throw DisplayName="@Throw || Total Amount not present" Exception="[New BusinessRuleException(in_Config(&quot;TotlaAmountNotMatched&quot;).ToString.Trim)]" sap:VirtualizedContainerService.HintSize="334,22" sap2010:WorkflowViewState.IdRef="Throw_3" />
         </Sequence>
       </If.Else>
     </If>
-    <If Condition="[in_dt_AbbyOutputResult.AsEnumerable().Where(Function(x) x(in_Config(&quot;Abby_InvoiceNoColumn&quot;).ToString.Trim.ToLower).Equals(in_TransactionItem(in_Config(&quot;InvoiceColumnName&quot;).ToString.Trim).ToString.Trim.ToLower) AndAlso CDate(x(in_Config(&quot;Abby_InvoiceDateColumn&quot;).ToString.Trim)).ToString(&quot;dd-MM-yyyy&quot;).Equals(CDate(in_TransactionItem(in_Config(&quot;InvoiceDateColumn&quot;).ToString.Trim).ToString).ToString(&quot;dd-MM-yyyy&quot;))).ToArray().Length&gt;0]" DisplayName="If || Invoice Date not matched" sap:VirtualizedContainerService.HintSize="477.6,613.6" sap2010:WorkflowViewState.IdRef="If_5">
+    <If Condition="[in_dt_AbbyOutputResult.AsEnumerable().Where(Function(x) x(in_Config(&quot;Abby_InvoiceNoColumn&quot;).ToString.Trim.ToLower).Equals(in_TransactionItem(in_Config(&quot;InvoiceColumnName&quot;).ToString.Trim).ToString.Trim.ToLower) AndAlso CDate(x(in_Config(&quot;Abby_InvoiceDateColumn&quot;).ToString.Trim)).ToString(&quot;dd-MM-yyyy&quot;).Equals(CDate(in_TransactionItem(in_Config(&quot;InvoiceDateColumn&quot;).ToString.Trim).ToString).ToString(&quot;dd-MM-yyyy&quot;))).ToArray().Length&gt;0]" DisplayName="If || Invoice Date not matched" sap:VirtualizedContainerService.HintSize="756,412.6666666666667" sap2010:WorkflowViewState.IdRef="If_5">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -161,17 +161,17 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
       <If.Then>
-        <ui:LogMessage DisplayName="Log Message || Invocie Date Matched" sap:VirtualizedContainerService.HintSize="333.6,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_9" Level="Info" Message="[&quot;Info: Invoice Date matched for this invoice number: &quot;+in_TransactionItem.Item(in_Config(&quot;InvoiceColumnName&quot;).ToString).ToString]" />
+        <ui:LogMessage DisplayName="Log Message || Invocie Date Matched" sap:VirtualizedContainerService.HintSize="334,94.66666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_9" Level="Info" Message="[&quot;Info: Invoice Date matched for this invoice number: &quot;+in_TransactionItem.Item(in_Config(&quot;InvoiceColumnName&quot;).ToString).ToString]" />
       </If.Then>
       <If.Else>
-        <Sequence DisplayName="Sequence || Invoice Date not matched Sequence" sap:VirtualizedContainerService.HintSize="400,335.2" sap2010:WorkflowViewState.IdRef="Sequence_9">
+        <Sequence DisplayName="Sequence || Invoice Date not matched Sequence" sap:VirtualizedContainerService.HintSize="376,248.66666666666666" sap2010:WorkflowViewState.IdRef="Sequence_9">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <ui:LogMessage DisplayName="Log Message || Invocie Date not Matched" sap:VirtualizedContainerService.HintSize="337.6,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_10" Level="Info" Message="[&quot;Info: Invoice Date not matched for this invoice number: &quot;+in_TransactionItem.Item(in_Config(&quot;InvoiceNumberColumn&quot;).ToString).ToString]" />
-          <Throw DisplayName="Throw || Invoice Date not matched" Exception="[New BusinessRuleException(in_Config(&quot;InvoiceDateNotMatched&quot;).ToString.Trim)]" sap:VirtualizedContainerService.HintSize="337.6,90.4" sap2010:WorkflowViewState.IdRef="Throw_4" />
+          <ui:LogMessage DisplayName="Log Message || Invocie Date not Matched" sap:VirtualizedContainerService.HintSize="334,94.66666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_10" Level="Error" Message="[&quot;Info: Invoice Date not matched for this invoice number: &quot;+in_TransactionItem.Item(in_Config(&quot;InvoiceNumberColumn&quot;).ToString).ToString]" />
+          <Throw DisplayName="@Throw || Invoice Date not matched" Exception="[New BusinessRuleException(in_Config(&quot;InvoiceDateNotMatched&quot;).ToString.Trim)]" sap:VirtualizedContainerService.HintSize="334,22" sap2010:WorkflowViewState.IdRef="Throw_4" />
         </Sequence>
       </If.Else>
     </If>

@@ -6,7 +6,7 @@
   <this:TryCatchSaveAttachments.in_Config>
     <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" />
   </this:TryCatchSaveAttachments.in_Config>
-  <sap:VirtualizedContainerService.HintSize>1498.6666666666667,3866.6666666666665</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1498.6666666666667,4596</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>ActivityBuilder_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="32">
@@ -118,13 +118,13 @@
       <AssemblyReference>System.ServiceModel.Activities</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="Sequence || Read Mails and save attachment" sap:VirtualizedContainerService.HintSize="1508.6666666666667,3802" sap2010:WorkflowViewState.IdRef="Sequence_12">
+  <Sequence DisplayName="Sequence || Read Mails and save attachment" sap:VirtualizedContainerService.HintSize="1508.6666666666667,4531.333333333333" sap2010:WorkflowViewState.IdRef="Sequence_12">
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <TryCatch DisplayName="Try Catch || Save Attachments" sap:VirtualizedContainerService.HintSize="1466.6666666666667,2738.6666666666665" sap2010:WorkflowViewState.IdRef="TryCatch_1">
+    <TryCatch DisplayName="Try Catch || Save Attachments" sap:VirtualizedContainerService.HintSize="1466.6666666666667,2918" sap2010:WorkflowViewState.IdRef="TryCatch_1">
       <TryCatch.Variables>
         <Variable x:TypeArguments="scg:List(snm:MailMessage)" Name="MailMessages" />
       </TryCatch.Variables>
@@ -135,7 +135,7 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
       <TryCatch.Try>
-        <Sequence DisplayName="Sequence || Read Mail Workflow" sap:VirtualizedContainerService.HintSize="1428,2500.6666666666665" sap2010:WorkflowViewState.IdRef="Sequence_5">
+        <Sequence DisplayName="Sequence || Read Mail Workflow" sap:VirtualizedContainerService.HintSize="1428,2680" sap2010:WorkflowViewState.IdRef="Sequence_5">
           <Sequence.Variables>
             <Variable x:TypeArguments="x:Boolean" Name="IsOutlookConnectionSuccessful" />
           </Sequence.Variables>
@@ -153,7 +153,7 @@
               <InArgument x:TypeArguments="x:Boolean">False</InArgument>
             </Assign.Value>
           </Assign>
-          <TryCatch DisplayName="Try Catch || Mail Retry Try Catch" sap:VirtualizedContainerService.HintSize="1386,726" sap2010:WorkflowViewState.IdRef="TryCatch_3">
+          <TryCatch DisplayName="Try Catch || Mail Retry Try Catch" sap:VirtualizedContainerService.HintSize="1386,514.6666666666666" sap2010:WorkflowViewState.IdRef="TryCatch_3">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -170,7 +170,7 @@
                           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                         </scg:Dictionary>
                       </sap:WorkflowViewStateService.ViewState>
-                      <ui:GetOutlookMailMessages Account="{x:Null}" Filter="{x:Null}" FilterByMessageIds="{x:Null}" TimeoutMS="{x:Null}" DisplayName="Get Outlook Mail Messages || Read Mails from Specified Folder" GetAttachements="False" sap:VirtualizedContainerService.HintSize="262,22" sap2010:WorkflowViewState.IdRef="GetOutlookMailMessages_1" MailFolder="[&quot;Inbox\&quot;+datetime.Now.ToString(&quot;yyyy&quot;)+&quot;-&quot;+in_Config(&quot;MailFolder&quot;).ToString]" MarkAsRead="False" Messages="[MailMessages]" OnlyUnreadMessages="True" OrderByDate="NewestFirst" Top="30" />
+                      <ui:GetOutlookMailMessages Account="{x:Null}" Filter="{x:Null}" FilterByMessageIds="{x:Null}" TimeoutMS="{x:Null}" DisplayName="Get Outlook Mail Messages || Read Mails from Specified Folder" GetAttachements="False" sap:VirtualizedContainerService.HintSize="262,22" sap2010:WorkflowViewState.IdRef="GetOutlookMailMessages_1" MailFolder="[in_Config(&quot;OutlookFolder&quot;).ToString+datetime.Now.ToString(&quot;yyyy&quot;)+&quot;-&quot;+in_Config(&quot;MailFolder&quot;).ToString]" MarkAsRead="False" Messages="[MailMessages]" OnlyUnreadMessages="True" OrderByDate="NewestFirst" Top="30" />
                       <Assign DisplayName="Assign || Outlook Connection True Flag Variable" sap:VirtualizedContainerService.HintSize="262,62" sap2010:WorkflowViewState.IdRef="Assign_7">
                         <Assign.To>
                           <OutArgument x:TypeArguments="x:Boolean">[IsOutlookConnectionSuccessful]</OutArgument>
@@ -190,10 +190,10 @@
               </ui:RetryScope>
             </TryCatch.Try>
             <TryCatch.Catches>
-              <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="540.8,22.4" sap2010:WorkflowViewState.IdRef="Catch`1_4">
+              <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="400,319.3333333333333" sap2010:WorkflowViewState.IdRef="Catch`1_4">
                 <sap:WorkflowViewStateService.ViewState>
                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                     <x:Boolean x:Key="IsPinned">False</x:Boolean>
                   </scg:Dictionary>
                 </sap:WorkflowViewStateService.ViewState>
@@ -201,18 +201,18 @@
                   <ActivityAction.Argument>
                     <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
                   </ActivityAction.Argument>
-                  <Sequence DisplayName="Sequence || Mail Exception Sequence" sap:VirtualizedContainerService.HintSize="400,335.2" sap2010:WorkflowViewState.IdRef="Sequence_29">
+                  <Sequence DisplayName="Sequence || Mail Exception Sequence" sap:VirtualizedContainerService.HintSize="376,248.66666666666666" sap2010:WorkflowViewState.IdRef="Sequence_29">
                     <sap:WorkflowViewStateService.ViewState>
                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
                         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                       </scg:Dictionary>
                     </sap:WorkflowViewStateService.ViewState>
-                    <ui:LogMessage DisplayName="Log Message || Outlook Connection Log" sap:VirtualizedContainerService.HintSize="337.6,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_7" Level="Info" Message="[&quot;Excception: Outlook Connection Server Issue Occured&quot;]" />
-                    <Throw DisplayName="Throw || Server Issue" Exception="[New BusinessRuleException(in_Config(&quot;MailServerConnectionIssue&quot;).ToString.Trim)]" sap:VirtualizedContainerService.HintSize="337.6,90.4" sap2010:WorkflowViewState.IdRef="Throw_8" />
+                    <ui:LogMessage DisplayName="Log Message || Outlook Connection Log" sap:VirtualizedContainerService.HintSize="334,94.66666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_7" Level="Error" Message="[&quot;Excception: Outlook Connection Server Issue Occured&quot;]" />
+                    <Throw DisplayName="@Throw || Server Issue" Exception="[New BusinessRuleException(in_Config(&quot;MailServerConnectionIssue&quot;).ToString.Trim)]" sap:VirtualizedContainerService.HintSize="334,22" sap2010:WorkflowViewState.IdRef="Throw_8" />
                   </Sequence>
                 </ActivityAction>
               </Catch>
-              <Catch x:TypeArguments="s:ArgumentException" sap:VirtualizedContainerService.HintSize="540.8,22.4" sap2010:WorkflowViewState.IdRef="Catch`1_5">
+              <Catch x:TypeArguments="s:ArgumentException" sap:VirtualizedContainerService.HintSize="400,22" sap2010:WorkflowViewState.IdRef="Catch`1_5">
                 <sap:WorkflowViewStateService.ViewState>
                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                     <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -223,14 +223,14 @@
                   <ActivityAction.Argument>
                     <DelegateInArgument x:TypeArguments="s:ArgumentException" Name="exception" />
                   </ActivityAction.Argument>
-                  <Sequence DisplayName="Sequence || Mail Argument Exception Sequence" sap:VirtualizedContainerService.HintSize="400,335.2" sap2010:WorkflowViewState.IdRef="Sequence_30">
+                  <Sequence DisplayName="Sequence || Mail Argument Exception Sequence" sap:VirtualizedContainerService.HintSize="376,248.66666666666666" sap2010:WorkflowViewState.IdRef="Sequence_30">
                     <sap:WorkflowViewStateService.ViewState>
                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
                         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                         <x:Boolean x:Key="IsPinned">False</x:Boolean>
                       </scg:Dictionary>
                     </sap:WorkflowViewStateService.ViewState>
-                    <ui:LogMessage DisplayName="Log Message || Mail Folder not Present log" sap:VirtualizedContainerService.HintSize="337.6,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_10" Level="Error" Message="[&quot;Exception: Mail folder doesn't exist&quot;]">
+                    <ui:LogMessage DisplayName="Log Message || Mail Folder not Present log" sap:VirtualizedContainerService.HintSize="334,94.66666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_10" Level="Error" Message="[&quot;Exception: Mail folder doesn't exist&quot;]">
                       <sap:WorkflowViewStateService.ViewState>
                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
                           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -238,7 +238,7 @@
                         </scg:Dictionary>
                       </sap:WorkflowViewStateService.ViewState>
                     </ui:LogMessage>
-                    <Throw DisplayName="Throw || Mail Folder not found" Exception="[New BusinessRuleException(in_Config(&quot;MailFolderNotPresent&quot;).ToString.Trim)]" sap:VirtualizedContainerService.HintSize="337.6,90.4" sap2010:WorkflowViewState.IdRef="Throw_9">
+                    <Throw DisplayName="@Throw || Mail Folder not found" Exception="[New BusinessRuleException(in_Config(&quot;MailFolderNotPresent&quot;).ToString.Trim)]" sap:VirtualizedContainerService.HintSize="334,22" sap2010:WorkflowViewState.IdRef="Throw_9">
                       <sap:WorkflowViewStateService.ViewState>
                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
                           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -251,22 +251,22 @@
               </Catch>
             </TryCatch.Catches>
           </TryCatch>
-          <If Condition="[MailMessages.AsEnumerable().Where(Function(x) x.Subject.Contains(Now.ToString(&quot;yyyy-MM&quot;)+&quot;AE_&quot;+Now.AddDays(-6).ToString(&quot;ddMM&quot;)+&quot; to &quot;+Now.ToString(&quot;ddMM&quot;))).ToArray().Length &gt; 1]" DisplayName="If || Check if multiple mails are present" sap:VirtualizedContainerService.HintSize="1386,52.666666666666664" sap2010:WorkflowViewState.IdRef="If_7">
+          <If Condition="[MailMessages.AsEnumerable().Where(Function(x) x.Subject.Contains(Now.ToString(&quot;yyyy-MM&quot;)+&quot;AE_&quot;+Now.AddDays(-6).ToString(&quot;ddMM&quot;)+&quot; to &quot;+Now.ToString(&quot;ddMM&quot;))).ToArray().Length &gt; 1]" DisplayName="If || Check if multiple mails are present" sap:VirtualizedContainerService.HintSize="1386,443.3333333333333" sap2010:WorkflowViewState.IdRef="If_7">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                 <x:Boolean x:Key="IsPinned">False</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
             <If.Then>
-              <Sequence DisplayName="Sequence || Multiple Mail Sequence" sap:VirtualizedContainerService.HintSize="400,335.2" sap2010:WorkflowViewState.IdRef="Sequence_21">
+              <Sequence DisplayName="Sequence || Multiple Mail Sequence" sap:VirtualizedContainerService.HintSize="376,248.66666666666666" sap2010:WorkflowViewState.IdRef="Sequence_21">
                 <sap:WorkflowViewStateService.ViewState>
                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                     <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                   </scg:Dictionary>
                 </sap:WorkflowViewStateService.ViewState>
-                <ui:LogMessage DisplayName="Log Message || Multiple mail Log" sap:VirtualizedContainerService.HintSize="337.6,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_5" Level="Info" Message="[&quot;Exception: Multiple Mails found&quot;]" />
-                <Throw DisplayName="Throw || Multiple Mails" Exception="[New BusinessRuleException(in_Config(&quot;MultipleMailsFound&quot;).ToString.Trim)]" sap:VirtualizedContainerService.HintSize="337.6,90.4" sap2010:WorkflowViewState.IdRef="Throw_6" />
+                <ui:LogMessage DisplayName="Log Message || Multiple mail Log" sap:VirtualizedContainerService.HintSize="334,94.66666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_5" Level="Error" Message="[&quot;Exception: Multiple Mails found&quot;]" />
+                <Throw DisplayName="@Throw || Multiple Mails" Exception="[New BusinessRuleException(in_Config(&quot;MultipleMailsFound&quot;).ToString.Trim)]" sap:VirtualizedContainerService.HintSize="334,22" sap2010:WorkflowViewState.IdRef="Throw_6" />
               </Sequence>
             </If.Then>
           </If>
@@ -334,23 +334,28 @@
                                   <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                 </scg:Dictionary>
                               </sap:WorkflowViewStateService.ViewState>
-                              <ui:LogMessage DisplayName="Log Message || No Attachment Log" sap:VirtualizedContainerService.HintSize="334,94.66666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_12" Level="Info" Message="[&quot;Exception: No Attachment found&quot;]" />
-                              <Throw DisplayName="Throw || No Attachment" Exception="[New BusinessRuleException(in_Config(&quot;NoAttachmentFound&quot;).ToString.Trim)]" sap:VirtualizedContainerService.HintSize="334,22" sap2010:WorkflowViewState.IdRef="Throw_3" />
+                              <ui:LogMessage DisplayName="Log Message || No Attachment Log" sap:VirtualizedContainerService.HintSize="334,94.66666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_12" Level="Error" Message="[&quot;Exception: No Attachment found&quot;]" />
+                              <Throw DisplayName="@Throw || No Attachment" Exception="[New BusinessRuleException(in_Config(&quot;NoAttachmentFound&quot;).ToString.Trim)]" sap:VirtualizedContainerService.HintSize="334,22" sap2010:WorkflowViewState.IdRef="Throw_3" />
                             </Sequence>
                           </If.Then>
                           <If.Else>
-                            <Sequence DisplayName="Sequence || Attachment Present Sequence" sap:VirtualizedContainerService.HintSize="421.3333333333333,206" sap2010:WorkflowViewState.IdRef="Sequence_8">
+                            <Sequence DisplayName="Sequence || Attachment Present Sequence" sap:VirtualizedContainerService.HintSize="421.3333333333333,236.66666666666666" sap2010:WorkflowViewState.IdRef="Sequence_8">
                               <sap:WorkflowViewStateService.ViewState>
                                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                   <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                 </scg:Dictionary>
                               </sap:WorkflowViewStateService.ViewState>
-                              <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="SaveAttachmentWorkFlow.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="379.3333333333333,114" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_3" UnSafe="False" WorkflowFileName="Custom Workflows\SaveAttachmentWorkFlow.xaml">
+                              <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="Save outlook attachment" DisplayName="SaveAttachmentWorkFlow.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="379.3333333333333,144.66666666666666" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_3" UnSafe="False" WorkflowFileName="Custom Workflows\SaveAttachmentWorkFlow.xaml">
                                 <ui:InvokeWorkflowFile.Arguments>
                                   <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">[in_Config]</InArgument>
                                   <InArgument x:TypeArguments="snm:MailMessage" x:Key="in_mail">[mail]</InArgument>
                                   <InArgument x:TypeArguments="x:String" x:Key="in_TodaysDateFolder">[io_TodaysDateFolder]</InArgument>
                                 </ui:InvokeWorkflowFile.Arguments>
+                                <sap:WorkflowViewStateService.ViewState>
+                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                    <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                                  </scg:Dictionary>
+                                </sap:WorkflowViewStateService.ViewState>
                               </ui:InvokeWorkflowFile>
                             </Sequence>
                           </If.Else>
@@ -374,8 +379,8 @@
                     <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                   </scg:Dictionary>
                 </sap:WorkflowViewStateService.ViewState>
-                <ui:LogMessage DisplayName="Log Message || No Mails" sap:VirtualizedContainerService.HintSize="334,94.66666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_9" Level="Info" Message="[&quot;Exception: No Mails found for Processing&quot;]" />
-                <Throw DisplayName="Throw || No Mails" Exception="[New BusinessRuleException(in_Config(&quot;NoMails&quot;).ToString.Trim)]" sap:VirtualizedContainerService.HintSize="334,22" sap2010:WorkflowViewState.IdRef="Throw_2">
+                <ui:LogMessage DisplayName="Log Message || No Mails" sap:VirtualizedContainerService.HintSize="334,94.66666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_9" Level="Error" Message="[&quot;Exception: No Mails found for Processing&quot;]" />
+                <Throw DisplayName="@Throw || No Mails" Exception="[New BusinessRuleException(in_Config(&quot;NoMails&quot;).ToString.Trim)]" sap:VirtualizedContainerService.HintSize="334,22" sap2010:WorkflowViewState.IdRef="Throw_2">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -405,7 +410,7 @@
         </Catch>
       </TryCatch.Catches>
     </TryCatch>
-    <If Condition="[Directory.GetFiles(io_TodaysDateFolder,in_Config(&quot;InputFileExtension&quot;).ToString.Trim).Count &gt; 1]" DisplayName="If || Check for Multiple Excel Files" sap:VirtualizedContainerService.HintSize="1466.6666666666667,52.666666666666664" sap2010:WorkflowViewState.IdRef="If_9">
+    <If Condition="[Directory.GetFiles(io_TodaysDateFolder,in_Config(&quot;InputFileExtension&quot;).ToString.Trim).Count &gt; 1]" DisplayName="If || Check for Multiple Excel Files" sap:VirtualizedContainerService.HintSize="484,443.3333333333333" sap2010:WorkflowViewState.IdRef="If_9">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -413,18 +418,18 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
       <If.Then>
-        <Sequence DisplayName="Sequence || Multiple Excel Files Sequence" sap:VirtualizedContainerService.HintSize="400,335.2" sap2010:WorkflowViewState.IdRef="Sequence_23">
+        <Sequence DisplayName="Sequence || Multiple Excel Files Sequence" sap:VirtualizedContainerService.HintSize="376,248.66666666666666" sap2010:WorkflowViewState.IdRef="Sequence_23">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <ui:LogMessage DisplayName="Log Message || Multiple Excel Files" sap:VirtualizedContainerService.HintSize="337.6,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_6" Level="Info" Message="[&quot;Exception: Multiple Excel found for processing&quot;]" />
-          <Throw DisplayName="Throw || Multiple Input Excel" Exception="[New BusinessRuleException(in_Config(&quot;MutlipleInputExcel&quot;).ToString.Trim)]" sap:VirtualizedContainerService.HintSize="337.6,90.4" sap2010:WorkflowViewState.IdRef="Throw_7" />
+          <ui:LogMessage DisplayName="Log Message || Multiple Excel Files" sap:VirtualizedContainerService.HintSize="334,94.66666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_6" Level="Error" Message="[&quot;Exception: Multiple Excel found for processing&quot;]" />
+          <Throw DisplayName="@Throw || Multiple Input Excel" Exception="[New BusinessRuleException(in_Config(&quot;MutlipleInputExcel&quot;).ToString.Trim)]" sap:VirtualizedContainerService.HintSize="334,22" sap2010:WorkflowViewState.IdRef="Throw_7" />
         </Sequence>
       </If.Then>
     </If>
-    <If Condition="[Directory.GetFiles(io_TodaysDateFolder,in_Config(&quot;InputFileExtension&quot;).ToString.Trim).Count = 0]" DisplayName="If || Check for No Excel" sap:VirtualizedContainerService.HintSize="855.2,52.8" sap2010:WorkflowViewState.IdRef="If_3">
+    <If Condition="[Directory.GetFiles(io_TodaysDateFolder,in_Config(&quot;InputFileExtension&quot;).ToString.Trim).Count = 0]" DisplayName="If || Check for No Excel" sap:VirtualizedContainerService.HintSize="756,412.6666666666667" sap2010:WorkflowViewState.IdRef="If_3">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -432,34 +437,34 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
       <If.Then>
-        <Sequence DisplayName="Sequence || No Input File Sequence" sap:VirtualizedContainerService.HintSize="400,335.2" sap2010:WorkflowViewState.IdRef="Sequence_10">
+        <Sequence DisplayName="Sequence || No Input File Sequence" sap:VirtualizedContainerService.HintSize="376,248.66666666666666" sap2010:WorkflowViewState.IdRef="Sequence_10">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <ui:LogMessage DisplayName="Log Message || Input File not found" sap:VirtualizedContainerService.HintSize="337.6,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_11" Level="Info" Message="[&quot;Exception: No Input Excel file found&quot;]" />
-          <Throw DisplayName="Throw || No Input Excel Found" Exception="[New BusinessRuleException(in_Config(&quot;InputExcelNotFound&quot;).ToString.Trim)]" sap:VirtualizedContainerService.HintSize="337.6,90.4" sap2010:WorkflowViewState.IdRef="Throw_4" />
+          <ui:LogMessage DisplayName="Log Message || Input File not found" sap:VirtualizedContainerService.HintSize="334,94.66666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_11" Level="Error" Message="[&quot;Exception: No Input Excel file found&quot;]" />
+          <Throw DisplayName="@Throw || No Input Excel Found" Exception="[New BusinessRuleException(in_Config(&quot;InputExcelNotFound&quot;).ToString.Trim)]" sap:VirtualizedContainerService.HintSize="334,22" sap2010:WorkflowViewState.IdRef="Throw_4" />
         </Sequence>
       </If.Then>
       <If.Else>
-        <ui:LogMessage DisplayName="Log Message || Single Excel File Sequence" sap:VirtualizedContainerService.HintSize="333.6,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_13" Level="Info" Message="[&quot;Info: Single Excel file found&quot;]" />
+        <ui:LogMessage DisplayName="Log Message || Single Excel File Sequence" sap:VirtualizedContainerService.HintSize="334,94.66666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_13" Level="Info" Message="[&quot;Info: Single Excel file found&quot;]" />
       </If.Else>
     </If>
-    <If Condition="[Directory.GetFiles(io_TodaysDateFolder,in_Config(&quot;InputFilePdfExtension&quot;).ToString.Trim).Count = 0]" DisplayName="If || Check for Input Pdf files" sap:VirtualizedContainerService.HintSize="855.2,613.6" sap2010:WorkflowViewState.IdRef="If_10">
+    <If Condition="[Directory.GetFiles(io_TodaysDateFolder,in_Config(&quot;InputFilePdfExtension&quot;).ToString.Trim).Count = 0]" DisplayName="If || Check for Input Pdf files" sap:VirtualizedContainerService.HintSize="1466.6666666666667,412.6666666666667" sap2010:WorkflowViewState.IdRef="If_10">
       <If.Then>
-        <Sequence DisplayName="Sequence || Check for Pdf files if present Sequence" sap:VirtualizedContainerService.HintSize="400,335.2" sap2010:WorkflowViewState.IdRef="Sequence_31">
+        <Sequence DisplayName="Sequence || Check for Pdf files if present Sequence" sap:VirtualizedContainerService.HintSize="376,248.66666666666666" sap2010:WorkflowViewState.IdRef="Sequence_31">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <ui:LogMessage DisplayName="Log Message || No Pdfs Files Found Log" sap:VirtualizedContainerService.HintSize="337.6,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_15" Level="Info" Message="[&quot;Exception: No pdf files found&quot;]" />
-          <Throw DisplayName="Throw || No Pdfs" Exception="[New BusinessRuleException(in_Config(&quot;NoPdfFilesFound&quot;).ToString.Trim)]" sap:VirtualizedContainerService.HintSize="337.6,90.4" sap2010:WorkflowViewState.IdRef="Throw_10" />
+          <ui:LogMessage DisplayName="Log Message || No Pdfs Files Found Log" sap:VirtualizedContainerService.HintSize="334,94.66666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_15" Level="Error" Message="[&quot;Exception: No pdf files found&quot;]" />
+          <Throw DisplayName="@Throw || No Pdfs" Exception="[New BusinessRuleException(in_Config(&quot;NoPdfFilesFound&quot;).ToString.Trim)]" sap:VirtualizedContainerService.HintSize="334,22" sap2010:WorkflowViewState.IdRef="Throw_10" />
         </Sequence>
       </If.Then>
       <If.Else>
-        <ui:LogMessage DisplayName="Log Message || Pdf files found Log" sap:VirtualizedContainerService.HintSize="333.6,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_16" Level="Info" Message="[&quot;Info: Pdf files found in Folder&quot;]" />
+        <ui:LogMessage DisplayName="Log Message || Pdf files found Log" sap:VirtualizedContainerService.HintSize="334,94.66666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_16" Level="Info" Message="[&quot;Info: Pdf files found in Folder&quot;]" />
       </If.Else>
     </If>
     <ui:LogMessage DisplayName="Log Message || Read Mails Complete Log" sap:VirtualizedContainerService.HintSize="855.2,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_14" Level="Info" Message="[&quot;Completed: Read Mails and Get Attachments Workflow&quot;]" />
