@@ -2,11 +2,12 @@
   <x:Members>
     <x:Property Name="in_Config" Type="InArgument(scg:Dictionary(x:String, x:Object))" />
     <x:Property Name="out_dt_AbbyOutputResult" Type="OutArgument(sd:DataTable)" />
+    <x:Property Name="in_AbbyPath" Type="InArgument(x:String)" />
   </x:Members>
   <VisualBasic.Settings>
     <x:Null />
   </VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1153.3333333333333,1959.3333333333333</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>899.3333333333334,1959.3333333333333</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>AbbyOutputFileValidation_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="29">
@@ -95,7 +96,6 @@
   </TextExpression.ReferencesForImplementation>
   <Sequence sap2010:Annotation.AnnotationText="Verify Abby Output file" DisplayName="AbbyOutputFileValidation" sap:VirtualizedContainerService.HintSize="840,1894.6666666666667" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
-      <Variable x:TypeArguments="x:Boolean" Name="IsAbbyOutputFileExists" />
       <Variable x:TypeArguments="x:Boolean" Name="IsColumnPresent" />
       <Variable x:TypeArguments="x:String" Name="MissingColumnName" />
       <Variable x:TypeArguments="x:Boolean" Name="IsRecordPresent" />
@@ -111,15 +111,33 @@
     <ui:LogMessage DisplayName="Log Message || Abby Output Validation Start Log" sap:VirtualizedContainerService.HintSize="798,94.66666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Start: Abby Output File Validation Workflow&quot;]" />
     <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="Validate ABBYY file" DisplayName="Custom Workflows\ExcelDataValidationWorkflow.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="798,144.66666666666666" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" UnSafe="False" WorkflowFileName="Custom Workflows\ExcelDataValidationWorkflow.xaml">
       <ui:InvokeWorkflowFile.Arguments>
-        <InArgument x:TypeArguments="x:String" x:Key="in_ColumnsName">[in_Config("AbbyColumnCheck").ToString]</InArgument>
-        <OutArgument x:TypeArguments="x:Boolean" x:Key="out_IsColumnPresent">[IsColumnPresent]</OutArgument>
-        <OutArgument x:TypeArguments="x:String" x:Key="out_MissingColumnName">[MissingColumnName]</OutArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_ExcelFilePath">[path.Combine(in_Config("OutputHotFolder").ToString.Trim,in_Config("AbbyOutputFileName").ToString.Trim,Now.ToString(in_Config("AbbyOutputDateFormat").ToString.Trim),".xlsx")]</InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_ExcelSheetName">[in_Config("AbbyFileSheetName").ToString.Trim]</InArgument>
-        <OutArgument x:TypeArguments="x:Boolean" x:Key="out_IsRecordPresent">[IsRecordPresent]</OutArgument>
-        <OutArgument x:TypeArguments="x:Boolean" x:Key="out_IsFileSizeZero">[IsFileSizeZero]</OutArgument>
-        <OutArgument x:TypeArguments="x:String" x:Key="out_NoRecordColumn">[NoRecordColumn]</OutArgument>
-        <OutArgument x:TypeArguments="sd:DataTable" x:Key="out_dt_ExcelData">[out_dt_AbbyOutputResult]</OutArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_ColumnsName">
+          <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_Config(&quot;AbbyColumnCheck&quot;).ToString" />
+        </InArgument>
+        <OutArgument x:TypeArguments="x:Boolean" x:Key="out_IsColumnPresent">
+          <VisualBasicReference x:TypeArguments="x:Boolean" ExpressionText="IsColumnPresent" />
+        </OutArgument>
+        <OutArgument x:TypeArguments="x:String" x:Key="out_MissingColumnName">
+          <VisualBasicReference x:TypeArguments="x:String" ExpressionText="MissingColumnName" />
+        </OutArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_ExcelFilePath">
+          <VisualBasicValue x:TypeArguments="x:String" ExpressionText="path.Combine(in_Config(&quot;OutputHotFolder&quot;).ToString.Trim,in_AbbyPath)" />
+        </InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_ExcelSheetName">
+          <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_Config(&quot;AbbyFileSheetName&quot;).ToString.Trim" />
+        </InArgument>
+        <OutArgument x:TypeArguments="x:Boolean" x:Key="out_IsRecordPresent">
+          <VisualBasicReference x:TypeArguments="x:Boolean" ExpressionText="IsRecordPresent" />
+        </OutArgument>
+        <OutArgument x:TypeArguments="x:Boolean" x:Key="out_IsFileSizeZero">
+          <VisualBasicReference x:TypeArguments="x:Boolean" ExpressionText="IsFileSizeZero" />
+        </OutArgument>
+        <OutArgument x:TypeArguments="x:String" x:Key="out_NoRecordColumn">
+          <VisualBasicReference x:TypeArguments="x:String" ExpressionText="NoRecordColumn" />
+        </OutArgument>
+        <OutArgument x:TypeArguments="sd:DataTable" x:Key="out_dt_ExcelData">
+          <VisualBasicReference x:TypeArguments="sd:DataTable" ExpressionText="out_dt_AbbyOutputResult" />
+        </OutArgument>
       </ui:InvokeWorkflowFile.Arguments>
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">

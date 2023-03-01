@@ -6,7 +6,7 @@
   <this:Createfoldertosaveattachments.in_Config>
     <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" />
   </this:Createfoldertosaveattachments.in_Config>
-  <sap:VirtualizedContainerService.HintSize>1153.3333333333333,1626.6666666666667</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>899.3333333333334,1811.3333333333333</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>ActivityBuilder_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="27">
@@ -106,7 +106,7 @@
       <AssemblyReference>System.IO.FileSystem.DriveInfo</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="Create Folder required for Saving Attachments" DisplayName="Sequence || Create folder to save attachments" sap:VirtualizedContainerService.HintSize="421.3333333333333,1562" sap2010:WorkflowViewState.IdRef="Sequence_9">
+  <Sequence sap2010:Annotation.AnnotationText="Create Folder required for Saving Attachments" DisplayName="Sequence || Create folder to save attachments" sap:VirtualizedContainerService.HintSize="421.3333333333333,1746.6666666666667" sap2010:WorkflowViewState.IdRef="Sequence_9">
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -114,21 +114,6 @@
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
     <ui:LogMessage DisplayName="Log Message || Create Folder Start Log" sap:VirtualizedContainerService.HintSize="379.3333333333333,94.66666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_4" Level="Info" Message="[&quot;Start: Create Folder Workflow&quot;]" />
-    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="Hot Folder" DisplayName="CreateRequiredFolder.xaml - HotFolder" sap:VirtualizedContainerService.HintSize="379.3333333333333,144.66666666666666" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_6" UnSafe="False" WorkflowFileName="Custom Workflows\SharedFolder\CreateRequiredFolder.xaml">
-      <ui:InvokeWorkflowFile.Arguments>
-        <InArgument x:TypeArguments="x:String" x:Key="in_FolderPath">
-          <VisualBasicValue x:TypeArguments="x:String" ExpressionText="Path.Combine(in_Config(&quot;SharedFolderPath&quot;).ToString,in_Config(&quot;AbbyHotFolder&quot;).ToString.Trim)" />
-        </InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_FolderName">
-          <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_Config(&quot;AbbyHotFolder&quot;).ToString" />
-        </InArgument>
-      </ui:InvokeWorkflowFile.Arguments>
-      <sap:WorkflowViewStateService.ViewState>
-        <scg:Dictionary x:TypeArguments="x:String, x:Object">
-          <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
-        </scg:Dictionary>
-      </sap:WorkflowViewStateService.ViewState>
-    </ui:InvokeWorkflowFile>
     <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="AP KWE folder" DisplayName="CreateRequiredFolder.xaml - AP KWE Folder" sap:VirtualizedContainerService.HintSize="379.3333333333333,144.66666666666666" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="Custom Workflows\SharedFolder\CreateRequiredFolder.xaml">
       <ui:InvokeWorkflowFile.Arguments>
         <InArgument x:TypeArguments="x:String" x:Key="in_FolderPath">
@@ -144,14 +129,25 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:InvokeWorkflowFile>
-    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="Output folder" DisplayName="CreateRequiredFolder.xaml - Output folder" sap:VirtualizedContainerService.HintSize="379.3333333333333,144.66666666666666" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_7" UnSafe="False" WorkflowFileName="Custom Workflows\SharedFolder\CreateRequiredFolder.xaml">
+    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="Abby Output Folder" DisplayName="CreateRequiredFolder.xaml - Abby Ouput folder" sap:VirtualizedContainerService.HintSize="379.3333333333333,144.66666666666666" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_8" UnSafe="False" WorkflowFileName="Custom Workflows\SharedFolder\CreateRequiredFolder.xaml">
       <ui:InvokeWorkflowFile.Arguments>
         <InArgument x:TypeArguments="x:String" x:Key="in_FolderPath">
-          <VisualBasicValue x:TypeArguments="x:String" ExpressionText="Path.Combine(in_Config(&quot;SharedFolderPath&quot;).ToString,in_Config(&quot;OutputFolder&quot;).ToString.Trim)" />
+          <VisualBasicValue x:TypeArguments="x:String" ExpressionText="Path.Combine(in_Config(&quot;SharedFolderPath&quot;).ToString,in_Config(&quot;AbbyOutputFolder&quot;).ToString.Trim)" />
         </InArgument>
         <InArgument x:TypeArguments="x:String" x:Key="in_FolderName">
-          <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_Config(&quot;OutputFolder&quot;).ToString.Trim" />
+          <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_Config(&quot;AbbyOutputFolder&quot;).ToString" />
         </InArgument>
+      </ui:InvokeWorkflowFile.Arguments>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </ui:InvokeWorkflowFile>
+    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="Hot Folder" DisplayName="CreateRequiredFolder.xaml - HotFolder" sap:VirtualizedContainerService.HintSize="379.3333333333333,144.66666666666666" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_6" UnSafe="False" WorkflowFileName="Custom Workflows\SharedFolder\CreateRequiredFolder.xaml">
+      <ui:InvokeWorkflowFile.Arguments>
+        <InArgument x:TypeArguments="x:String" x:Key="in_FolderPath">[Path.Combine(in_Config("SharedFolderPath").ToString,in_Config("AbbyHotFolder").ToString.Trim)]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_FolderName">[in_Config("AbbyHotFolder").ToString]</InArgument>
       </ui:InvokeWorkflowFile.Arguments>
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -191,8 +187,27 @@
     </Assign>
     <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="Today's date folder" DisplayName="CreateRequiredFolder.xaml - Todays date folder" sap:VirtualizedContainerService.HintSize="379.3333333333333,144.66666666666666" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_4" UnSafe="False" WorkflowFileName="Custom Workflows\SharedFolder\CreateRequiredFolder.xaml">
       <ui:InvokeWorkflowFile.Arguments>
-        <InArgument x:TypeArguments="x:String" x:Key="in_FolderPath">[out_TodaysDateFolder]</InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_FolderName">[Datetime.now.ToString(in_Config("TodaysDateFormat").ToString.Trim)]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_FolderPath">
+          <VisualBasicValue x:TypeArguments="x:String" ExpressionText="out_TodaysDateFolder" />
+        </InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_FolderName">
+          <VisualBasicValue x:TypeArguments="x:String" ExpressionText="Datetime.now.ToString(in_Config(&quot;TodaysDateFormat&quot;).ToString.Trim)" />
+        </InArgument>
+      </ui:InvokeWorkflowFile.Arguments>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </ui:InvokeWorkflowFile>
+    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="Output folder" DisplayName="CreateRequiredFolder.xaml - Output folder" sap:VirtualizedContainerService.HintSize="379.3333333333333,144.66666666666666" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_7" UnSafe="False" WorkflowFileName="Custom Workflows\SharedFolder\CreateRequiredFolder.xaml">
+      <ui:InvokeWorkflowFile.Arguments>
+        <InArgument x:TypeArguments="x:String" x:Key="in_FolderPath">
+          <VisualBasicValue x:TypeArguments="x:String" ExpressionText="Path.Combine(out_TodaysDateFolder,in_Config(&quot;OutputFolder&quot;).ToString.Trim)" />
+        </InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_FolderName">
+          <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_Config(&quot;OutputFolder&quot;).ToString.Trim" />
+        </InArgument>
       </ui:InvokeWorkflowFile.Arguments>
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
