@@ -3,11 +3,12 @@
     <x:Property Name="in_mail" Type="InArgument(snm:MailMessage)" />
     <x:Property Name="in_Config" Type="InArgument(scg:Dictionary(x:String, x:Object))" />
     <x:Property Name="in_TodaysDateFolder" Type="InArgument(x:String)" />
+    <x:Property Name="in_TempFolderPath" Type="InArgument(x:String)" />
   </x:Members>
   <this:SaveZipFileAttachment.in_mail>
     <InArgument x:TypeArguments="snm:MailMessage" />
   </this:SaveZipFileAttachment.in_mail>
-  <sap:VirtualizedContainerService.HintSize>966.6666666666666,3450</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1153.3333333333333,3450</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>ActivityBuilder_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="29">
@@ -154,7 +155,7 @@
                     <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                   </scg:Dictionary>
                 </sap:WorkflowViewStateService.ViewState>
-                <ui:SaveMailAttachments Attachments="{x:Null}" DisplayName="Save Attachments || Zip Attachment" ExcludeInlineAttachments="True" FolderPath="[in_TodaysDateFolder]" sap:VirtualizedContainerService.HintSize="642,86.66666666666667" sap2010:WorkflowViewState.IdRef="SaveMailAttachments_1" Message="[In_mail]" OverwriteExisting="False" />
+                <ui:SaveMailAttachments Attachments="{x:Null}" DisplayName="Save Attachments || Zip Attachment" ExcludeInlineAttachments="True" FolderPath="[in_TempFolderPath]" sap:VirtualizedContainerService.HintSize="642,86.66666666666667" sap2010:WorkflowViewState.IdRef="SaveMailAttachments_1" Message="[In_mail]" OverwriteExisting="False" />
                 <Delay DisplayName="Delay || Zip File delay" Duration="[TimeSpan.FromSeconds(CInt(in_Config(&quot;DelayForSavingAttachment&quot;).ToString.Trim))]" sap:VirtualizedContainerService.HintSize="642,22" sap2010:WorkflowViewState.IdRef="Delay_1" />
                 <If Condition="[Directory.GetFiles(in_TodaysDateFolder,in_Config(&quot;ZipFileExtension&quot;).ToString.Trim).Count &gt; 0]" DisplayName="If || Check if Attachment is in Zip format" sap:VirtualizedContainerService.HintSize="642,255.33333333333334" sap2010:WorkflowViewState.IdRef="If_10">
                   <sap:WorkflowViewStateService.ViewState>
@@ -217,7 +218,7 @@
         <OutArgument x:TypeArguments="scg:List(si:FileInfo)">[GetZipFiles]</OutArgument>
       </Assign.To>
       <Assign.Value>
-        <InArgument x:TypeArguments="scg:List(si:FileInfo)">[Directory.GetFiles(in_TodaysDateFolder).[Select](Function(f) New FileInfo(f)).Where(Function(f) f.Extension.Equals(".zip")).ToList()]</InArgument>
+        <InArgument x:TypeArguments="scg:List(si:FileInfo)">[Directory.GetFiles(in_TempFolderPath).[Select](Function(f) New FileInfo(f)).Where(Function(f) f.Extension.Equals(".zip")).ToList()]</InArgument>
       </Assign.Value>
     </Assign>
     <ui:ForEach x:TypeArguments="si:FileInfo" CurrentIndex="{x:Null}" DisplayName="For Each || Loop to extract zip file" sap:VirtualizedContainerService.HintSize="934.6666666666666,1728" sap2010:WorkflowViewState.IdRef="ForEach`1_5" Values="[GetZipFiles]">
@@ -243,12 +244,12 @@
                 <InArgument x:TypeArguments="x:String">[Split(Split(ZipFile.ToString,"\").Last,".").First]</InArgument>
               </Assign.Value>
             </Assign>
-            <ui:MoveFile ContinueOnError="{x:Null}" DestinationResource="{x:Null}" PathResource="{x:Null}" Destination="[Path.Combine(in_TodaysDateFolder,Path.GetFileName(ZipFile.FullName))]" DisplayName="Move File || Move zip file" sap:VirtualizedContainerService.HintSize="856,163.33333333333334" sap2010:WorkflowViewState.IdRef="MoveFile_1" Overwrite="True" Path="[ZipFile.FullName]" />
+            <ui:MoveFile ContinueOnError="{x:Null}" DestinationResource="{x:Null}" PathResource="{x:Null}" Destination="[Path.Combine(in_TempFolderPath,Path.GetFileName(ZipFile.FullName))]" DisplayName="Move File || Move zip file" sap:VirtualizedContainerService.HintSize="856,163.33333333333334" sap2010:WorkflowViewState.IdRef="MoveFile_1" Overwrite="True" Path="[ZipFile.FullName]" />
             <InvokeMethod DisplayName="Invoke Method || Extract Zip File" sap:VirtualizedContainerService.HintSize="856,137.33333333333334" sap2010:WorkflowViewState.IdRef="InvokeMethod_1" MethodName="ExtractToDirectory" TargetType="sic:ZipFile">
               <InArgument x:TypeArguments="x:String">[in_TodaysDateFolder+"\"+ Path.GetFileName(ZipFile.FullName)]</InArgument>
               <InArgument x:TypeArguments="x:String">[in_TodaysDateFolder+"\"]</InArgument>
             </InvokeMethod>
-            <ui:PathExists Resource="{x:Null}" DisplayName="Path Exists || Zip Folder" Exists="[IsZipFolderExists]" sap:VirtualizedContainerService.HintSize="856,90.66666666666667" sap2010:WorkflowViewState.IdRef="PathExists_1" Path="[Path.Combine(in_TodaysDateFolder,FolderName)]" PathType="Folder" />
+            <ui:PathExists Resource="{x:Null}" DisplayName="Path Exists || Zip Folder" Exists="[IsZipFolderExists]" sap:VirtualizedContainerService.HintSize="856,90.66666666666667" sap2010:WorkflowViewState.IdRef="PathExists_1" Path="[Path.Combine(in_TempFolderPath,FolderName)]" PathType="Folder" />
             <If Condition="[IsZipFolderExists]" DisplayName="If || Check if Zip Folder exists" sap:VirtualizedContainerService.HintSize="856,894.6666666666666" sap2010:WorkflowViewState.IdRef="If_11">
               <If.Then>
                 <Sequence DisplayName="Sequence || Delete extract created Zip Folder" sap:VirtualizedContainerService.HintSize="476,730.6666666666666" sap2010:WorkflowViewState.IdRef="Sequence_33">
@@ -257,7 +258,7 @@
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
-                  <ui:ForEach x:TypeArguments="x:String" CurrentIndex="{x:Null}" DisplayName="For Each" sap:VirtualizedContainerService.HintSize="434,383.3333333333333" sap2010:WorkflowViewState.IdRef="ForEach`1_8" Values="[Directory.GetFiles(in_TodaysDateFolder+&quot;\&quot;+FolderName+&quot;\&quot;)]">
+                  <ui:ForEach x:TypeArguments="x:String" CurrentIndex="{x:Null}" DisplayName="For Each" sap:VirtualizedContainerService.HintSize="434,383.3333333333333" sap2010:WorkflowViewState.IdRef="ForEach`1_10" Values="[Directory.GetFiles(in_TempFolderPath+&quot;\&quot;+FolderName+&quot;\&quot;)]">
                     <ui:ForEach.Body>
                       <ActivityAction x:TypeArguments="x:String">
                         <ActivityAction.Argument>
@@ -269,12 +270,12 @@
                               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                             </scg:Dictionary>
                           </sap:WorkflowViewStateService.ViewState>
-                          <ui:MoveFile ContinueOnError="{x:Null}" DestinationResource="{x:Null}" PathResource="{x:Null}" Destination="[in_TodaysDateFolder+&quot;\&quot;]" DisplayName="Move File || Extracted zip file" sap:VirtualizedContainerService.HintSize="334,163.33333333333334" sap2010:WorkflowViewState.IdRef="MoveFile_2" Path="[currentItem]" />
+                          <ui:MoveFile ContinueOnError="{x:Null}" DestinationResource="{x:Null}" PathResource="{x:Null}" Destination="[in_TempFolderPath+&quot;\&quot;]" DisplayName="Move File || Extracted zip file" sap:VirtualizedContainerService.HintSize="334,163.33333333333334" sap2010:WorkflowViewState.IdRef="MoveFile_2" Path="[currentItem]" />
                         </Sequence>
                       </ActivityAction>
                     </ui:ForEach.Body>
                   </ui:ForEach>
-                  <ui:DeleteFolderX DisplayName="Delete Folder || Delete Extra created Zip Folder" sap:VirtualizedContainerService.HintSize="434,80.66666666666667" sap2010:WorkflowViewState.IdRef="DeleteFolderX_1" Path="[Path.Combine(in_TodaysDateFolder,FolderName)]" Recursive="True" />
+                  <ui:DeleteFolderX DisplayName="Delete Folder || Delete Extra created Zip Folder" sap:VirtualizedContainerService.HintSize="434,80.66666666666667" sap2010:WorkflowViewState.IdRef="DeleteFolderX_1" Path="[Path.Combine(in_TempFolderPath,FolderName)]" Recursive="True" />
                   <ui:LogMessage DisplayName="Log Message || Delete Extra Zip File Folder Log" sap:VirtualizedContainerService.HintSize="434,94.66666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_7" Level="Info" Message="[&quot;Info: Extra Zip File Folder deleted successfully&quot;]" />
                 </Sequence>
               </If.Then>

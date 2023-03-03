@@ -8,7 +8,7 @@
   <VisualBasic.Settings>
     <x:Null />
   </VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>899.3333333333334,1506.6666666666667</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1153.3333333333333,1506.6666666666667</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>Initialization_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="28">
@@ -99,6 +99,7 @@
   <Sequence sap2010:Annotation.AnnotationText="Open applications used in the process and do necessary initialization procedures (e.g., login)." DisplayName="Initialize All Applications" sap:VirtualizedContainerService.HintSize="421.3333333333333,1442" sap2010:WorkflowViewState.IdRef="Sequence_9">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="abbyFilePath" />
+      <Variable x:TypeArguments="x:String" Name="TempFolder" />
     </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -106,11 +107,12 @@
         <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:LogMessage DisplayName="Log message (Initialize applications)" sap:VirtualizedContainerService.HintSize="379.3333333333333,94.66666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Trace" Message="[&quot;Opening applications...&quot;]" />
+    <ui:LogMessage DisplayName="Log message (Initialize applications)" sap:VirtualizedContainerService.HintSize="379.3333333333333,94.66666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Opening applications...&quot;]" />
     <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="Creates folder strucutre to save attachment" DisplayName="Createfoldertosaveattachments.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="379.3333333333333,144.66666666666666" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="Custom Workflows\Createfoldertosaveattachments.xaml">
       <ui:InvokeWorkflowFile.Arguments>
         <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">[in_Config]</InArgument>
         <OutArgument x:TypeArguments="x:String" x:Key="out_TodaysDateFolder">[out_TodaysDateFolder]</OutArgument>
+        <OutArgument x:TypeArguments="x:String" x:Key="out_TempFolderPath">[TempFolder]</OutArgument>
       </ui:InvokeWorkflowFile.Arguments>
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -122,6 +124,7 @@
       <ui:InvokeWorkflowFile.Arguments>
         <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">[in_Config]</InArgument>
         <InOutArgument x:TypeArguments="x:String" x:Key="io_TodaysDateFolder">[out_TodaysDateFolder]</InOutArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_TempFolderPath">[TempFolder]</InArgument>
       </ui:InvokeWorkflowFile.Arguments>
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -163,15 +166,9 @@
     </Assign>
     <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="Check for ABBYY file" DisplayName="CheckForAbbyyFile.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="379.3333333333333,144.66666666666666" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_5" UnSafe="False" WorkflowFileName="Custom Workflows\CheckForAbbyyFile.xaml">
       <ui:InvokeWorkflowFile.Arguments>
-        <InArgument x:TypeArguments="x:String" x:Key="in_FilePath">
-          <VisualBasicValue x:TypeArguments="x:String" ExpressionText="Path.Combine(in_Config(&quot;OutputHotFolder&quot;).ToString.Trim,abbyFilePath)" />
-        </InArgument>
-        <InArgument x:TypeArguments="x:Int32" x:Key="in_NumberOfRetries">
-          <VisualBasicValue x:TypeArguments="x:Int32" ExpressionText="CInt(in_Config(&quot;RetryForAbbyy&quot;).ToString)" />
-        </InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_ExceptionMessage">
-          <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_Config(&quot;AbbyyFileNotPresent&quot;).ToString" />
-        </InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_FilePath">[Path.Combine(in_Config("OutputHotFolder").ToString.Trim,abbyFilePath)]</InArgument>
+        <InArgument x:TypeArguments="x:Int32" x:Key="in_NumberOfRetries">[CInt(in_Config("RetryForAbbyy").ToString)]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_ExceptionMessage">[in_Config("AbbyyFileNotPresent").ToString]</InArgument>
       </ui:InvokeWorkflowFile.Arguments>
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">

@@ -4,7 +4,7 @@
     <x:Property Name="io_dt_TransactionData" Type="InOutArgument(sd:DataTable)" />
     <x:Property Name="in_TodaysDateFolder" Type="InArgument(x:String)" />
   </x:Members>
-  <sap:VirtualizedContainerService.HintSize>1153.3333333333333,2582</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>871.3333333333334,2816</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>ActivityBuilder_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="31">
@@ -122,7 +122,7 @@
       <x:Boolean x:Key="IsAnnotationDocked">False</x:Boolean>
     </scg:Dictionary>
   </sap:WorkflowViewStateService.ViewState>
-  <Sequence sap2010:Annotation.AnnotationText="Check different conditons on Input Excel File" DisplayName="Excel Formating" sap:VirtualizedContainerService.HintSize="798,2517.3333333333335" sap2010:WorkflowViewState.IdRef="Sequence_42">
+  <Sequence sap2010:Annotation.AnnotationText="Check different conditons on Input Excel File" DisplayName="Excel Formating" sap:VirtualizedContainerService.HintSize="798,2751.3333333333335" sap2010:WorkflowViewState.IdRef="Sequence_42">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:Boolean" Name="IsColumnPresent" />
       <Variable x:TypeArguments="x:String" Name="InvoiceReportFileName" />
@@ -224,7 +224,7 @@
         </Sequence>
       </If.Else>
     </If>
-    <If Condition="[IsRecordPresent]" DisplayName="If || Check if Excel contains Data or not" sap:VirtualizedContainerService.HintSize="756,412.6666666666667" sap2010:WorkflowViewState.IdRef="If_26">
+    <If Condition="[IsRecordPresent]" DisplayName="If || Check if Excel contains Data or not" sap:VirtualizedContainerService.HintSize="756,52.666666666666664" sap2010:WorkflowViewState.IdRef="If_26">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -270,7 +270,8 @@
     </If>
     <ui:AddDataColumn x:TypeArguments="x:Object" AllowDBNull="{x:Null}" AutoIncrement="{x:Null}" Column="{x:Null}" DefaultValue="{x:Null}" MaxLength="{x:Null}" Unique="{x:Null}" ColumnName="[in_Config(&quot;StatusColumnstobeAdded&quot;).ToString.Trim]" DataTable="[io_dt_TransactionData]" DisplayName="Add Data Column || Status" sap:VirtualizedContainerService.HintSize="756,190" sap2010:WorkflowViewState.IdRef="AddDataColumn`1_1" />
     <ui:AddDataColumn x:TypeArguments="x:Object" AllowDBNull="{x:Null}" AutoIncrement="{x:Null}" Column="{x:Null}" DefaultValue="{x:Null}" MaxLength="{x:Null}" Unique="{x:Null}" ColumnName="[in_Config(&quot;RemarksColumntobeAdded&quot;).ToString.Trim]" DataTable="[io_dt_TransactionData]" DisplayName="Add Data Column || Remarks" sap:VirtualizedContainerService.HintSize="756,190" sap2010:WorkflowViewState.IdRef="AddDataColumn`1_2" />
-    <ui:AddDataColumn x:TypeArguments="x:Object" AllowDBNull="{x:Null}" AutoIncrement="{x:Null}" Column="{x:Null}" DefaultValue="{x:Null}" MaxLength="{x:Null}" Unique="{x:Null}" ColumnName="[in_Config(&quot;BotProcessDateAndTime&quot;).ToString.Trim]" DataTable="[io_dt_TransactionData]" DisplayName="Add Data Column || Process Date and Time" sap:VirtualizedContainerService.HintSize="433.6,188" sap2010:WorkflowViewState.IdRef="AddDataColumn`1_3" />
-    <ui:LogMessage DisplayName="Log Message || Excel Formatting Completed Log" sap:VirtualizedContainerService.HintSize="433.6,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_49" Level="Info" Message="[&quot;Info: Excel Formatting Workflow&quot;]" />
+    <ui:AddDataColumn x:TypeArguments="x:Object" AllowDBNull="{x:Null}" AutoIncrement="{x:Null}" Column="{x:Null}" DefaultValue="{x:Null}" MaxLength="{x:Null}" Unique="{x:Null}" ColumnName="[in_Config(&quot;BotProcessDateAndTime&quot;).ToString.Trim]" DataTable="[io_dt_TransactionData]" DisplayName="Add Data Column || Process Date and Time" sap:VirtualizedContainerService.HintSize="756,190" sap2010:WorkflowViewState.IdRef="AddDataColumn`1_3" />
+    <ui:AddDataColumn x:TypeArguments="x:Object" AllowDBNull="{x:Null}" AutoIncrement="{x:Null}" Column="{x:Null}" DefaultValue="{x:Null}" MaxLength="{x:Null}" Unique="{x:Null}" ColumnName="[in_Config(&quot;AbbyyColumn&quot;).ToString]" DataTable="[io_dt_TransactionData]" DisplayName="Add Data Column: ABBYY column" sap:VirtualizedContainerService.HintSize="756,190" sap2010:WorkflowViewState.IdRef="AddDataColumn`1_5" />
+    <ui:LogMessage DisplayName="Log Message || Excel Formatting Completed Log" sap:VirtualizedContainerService.HintSize="756,94.66666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_49" Level="Info" Message="[&quot;Info: Excel Formatting Workflow&quot;]" />
   </Sequence>
 </Activity>
